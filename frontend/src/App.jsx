@@ -1,0 +1,34 @@
+import React from 'react';
+import Navbar from './components/Navbar';
+import Intro from "./components/Intro"
+import Skills from "./components/Skills"
+import Hobbies from "./components/Hobbies"
+import Footer from "./components/Footer"
+import Projects from "./components/Projects"
+import "./App.css"
+
+export default function App() {
+  return (
+    <div className=" from-slate-900 via-slate-800 to-slate-900 text-white">
+      <section id="Navbar">
+        <Navbar id="Navbar"/>
+      </section>
+      <section id="Intro">
+        <Intro/>
+      </section>
+      <section id="Skills" className="scroll-mt-24">
+        <Skills />
+      </section>
+      <section id="Hobbies" className="scroll-mt-22">
+        <Hobbies />
+      </section>
+      <section id="Projects" className="scroll-mt-22">
+        <Projects />
+      </section>
+      <section  id="Footer" >
+        <Footer />
+      </section>
+      
+    </div>
+  );
+}
