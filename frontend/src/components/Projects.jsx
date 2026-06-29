@@ -23,17 +23,17 @@ const Projects = ()=>{
       <div className="w-full h-20" ><p className="w-full h-full flex font-mono justify-center items-center text-4xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent" ><FcDocument size={40} className="mr-4  text-yellow-300" /> Projects </p></div>
       <hr className="bg-gradient-to-r from-purple-500 to-blue-500 mb-10 ml-30 mr-30 h-1"></hr>
       <div className="flex w-full h-fit flex-wrap justify-center items-center flex justify-center items-center gap-8 ">
-        {list.map((item,index)=><div key={index} className="group w-140 h-140 pb-2 border border-gray-800 hover:bg-gradient-to-br transform from-[#2e1d55] to-[#1f1339] hover:border-purple-500 rounded-xl hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 " >
-          <img className="rounded-t-xl h-[60%] w-full" src= {item.projectImg} alt={item.projectImg} ></img>
+        {list.map((item,index)=><div key={index} className="group w-140 h-120 pb-2 border border-gray-800 hover:bg-gradient-to-br transform from-[#2e1d55] to-[#1f1339] hover:border-purple-500 rounded-xl hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 " >
+          <img className="rounded-t-xl h-[65%] w-full" src= {item.projectImg} alt={item.projectImg} ></img>
           <p className="font-mono h-[5%] text-center text-xl m-4 group-hover:text-purple-500 transition-transform group-hover:scale-120" >{item.projectName}</p>
-          <p className="px-4 text-center h-[20%]" >{item.projectDescription}</p>
+          <p className="px-4 text-center h-[15%] text-gray-400" >{item.projectDescription}</p>
           <div className="w-full h-[10%] flex justify-evenly items-center" >
             <div className="border border-gray-700 rounded-xl flex py-1 px-2 justify-evenly items-center group-hover:border-purple-500" >
               <p><GoDotFill className="text-green-700 mr-2 animate-ping " size={15} /></p>
-              <a href={item.projectLink} target="_black" className="w-fit h-fit text-center " > Live Demo </a>
+              <a href={item.projectLink} target="_black" className="w-fit h-fit text-center text-gray-400 " > Live Demo </a>
             </div>
             <div className="border border-gray-700 rounded-xl flex py-1 px-2 justify-evenly items-center group-hover:border-purple-500" >
-              <FaCode className="text-green-400 mr-2" size={20} /><a href={item.codeLink} target="_blank" className="w-fit h-fit text-center">  Source Code </a>
+              <FaCode className="text-green-400 mr-2" size={20} /><a href={item.codeLink} target="_blank" className="w-fit h-fit text-center text-gray-400">  Source Code </a>
             </div>
           </div>
         </div>

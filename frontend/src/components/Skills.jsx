@@ -1,5 +1,5 @@
 import "../App.css"
-import { SiMongodb,SiExpress,SiThunderstore,SiAndroidstudio } from "react-icons/si";
+import { SiMongodb,SiExpress,SiThunderstore,SiAndroidstudio,SiRender } from "react-icons/si";
 import { FaNodeJs,FaJava,FaReact,FaPython } from "react-icons/fa";
 import { TbBrandJavascript,TbFileTypeHtml } from "react-icons/tb";
 import { FaGitAlt,FaGithub } from "react-icons/fa6";
@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const Skills = ()=>{
   const language = [{tag:FaJava,name:"Java"},{tag:TbBrandJavascript,name:"Java Script"},{tag:TbFileTypeHtml,name:"HTML"},{tag:BsFiletypeCss,name:"CSS "},{tag:FaPython,name:"Python"}];
   const technology = [{tag:SiMongodb,name:"Mongo Db"},{tag:SiExpress,name:"Express"},{tag:FaReact,name:"React"},{tag:FaNodeJs,name:"Node JS"},{tag:RiTailwindCssFill,name:"Tailwind css"}]
-  const tool = [{tag:FaGitAlt,name:"Git"},{tag:FaGithub,name:"Github"},{tag:SiCloudinary,name:"Cloudinary"},{tag:TbBrandVscode,name:"VS Code"},{tag:SiAndroidstudio,name:"Android Studio"}]
+  const tool = [{tag:FaGitAlt,name:"Git"},{tag:FaGithub,name:"Github"},{tag:SiCloudinary,name:"Cloudinary"},{tag:TbBrandVscode,name:"VS Code"},{tag:SiAndroidstudio,name:"Android Studio"},{tag:SiRender,name:"Render"}]
   return(
     <>
     <motion.div
@@ -22,11 +22,11 @@ const Skills = ()=>{
       <div className="w-full h-fit">
         <div className="font-mono text-4xl bg-gradient-to-r from-purple-600 to-blue-600 text-center flex justify-center items-center bg-clip-text text-transparent font-bold"><SiThunderstore className="text-yellow-300 mr-4" size={40} /> Tech Stack </div>
         <hr className="bg-gradient-to-r from-purple-500 to-blue-500 mt-10 ml-50 mr-50 h-1"></hr>
-        <div className=" hidden md:flex text-xl gap-12 justify-center items-center  py-8">
+        <div className="animate-scroll hidden md:flex text-xl gap-12 justify-center items-center  py-8">
           {language.map((item,index)=>{
             const Icon = item.tag
             return(
-              <div className="flex flex-col justify-center items-center hover:text-emerald-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
+              <div key={index} className="flex flex-col justify-center items-center hover:text-emerald-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
             )
           })}
         </div>
@@ -34,7 +34,7 @@ const Skills = ()=>{
           {technology.map((item,index)=>{
             const Icon = item.tag
             return(
-              <div className="flex flex-col justify-center items-center hover:text-sky-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
+              <div key={index} className="flex flex-col justify-center items-center hover:text-sky-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
             )
           })}
         </div>
@@ -42,7 +42,7 @@ const Skills = ()=>{
           {tool.map((item,index)=>{
             const Icon = item.tag
             return(
-              <div className="flex flex-col justify-center items-center hover:text-red-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
+              <div key={index} className="flex flex-col justify-center items-center hover:text-red-400 group transition-transform duration-500 hover:-translate-y-3 hover:scale-120"><Icon size={40} className="transition-transform duration-1000 group-hover:rotate-360" /><p>{item.name}</p></div>
             )
           })}
         </div>

@@ -5,6 +5,8 @@ import Skills from "./components/Skills"
 import Hobbies from "./components/Hobbies"
 import Footer from "./components/Footer"
 import Projects from "./components/Projects"
+import Connect from "./components/Connect"
+import Leetcode from "./components/Leetcode"
 import "./App.css"
 
 export default function App() {
@@ -22,8 +24,14 @@ export default function App() {
       <section id="Hobbies" className="scroll-mt-22">
         <Hobbies />
       </section>
+      <section id="leetcode">
+        <Leetcode/>
+      </section>
       <section id="Projects" className="scroll-mt-22">
         <Projects />
+      </section>
+      <section id="contact">
+        <Connect/>
       </section>
       <section  id="Footer" >
         <Footer />
