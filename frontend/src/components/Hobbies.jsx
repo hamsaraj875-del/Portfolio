@@ -27,7 +27,7 @@ const Hobbies = () => {
                 {" "}
                 Learning{" "}
               </div>
-              <div className="tex-lg  text-center font-serif">
+              <div className=" text-gray-400 text-center font-serif">
                 Constantly exploring new ideas, technologies, and skills to
                 learn something new every day.
               </div>
@@ -41,7 +41,7 @@ const Hobbies = () => {
                 {" "}
                 Music{" "}
               </div>
-              <div className="tex-lg  text-center font-serif">
+              <div className=" text-gray-400 text-center font-serif">
                 Listening to music to unwind, recharge, and return to work with
                 greater focus and productivity.
               </div>
@@ -55,7 +55,7 @@ const Hobbies = () => {
                 {" "}
                 Coding{" "}
               </div>
-              <div className="tex-lg  text-center font-serif">
+              <div className=" text-gray-400  text-center font-serif">
                 Building projects, solving coding challenges, and njoying
                 algorithmic thinking and solving challenging programming
                 problems.

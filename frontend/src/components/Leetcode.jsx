@@ -27,22 +27,8 @@ const Leetcode = () => {
         const data = await res.json();
         const data1 = await res1.json();
         setGithubData(data1);
-        console.log(data1);
-        setLeetcodeData(data);
-        console.log(data);
+        setLeetcodeData(data.message);
         setLoader(false);
-        setEasy(
-          data.message.data.matchedUser.submitStats.acSubmissionNum[1].count,
-        );
-        setMedium(
-          data.message.data.matchedUser.submitStats.acSubmissionNum[2].count,
-        );
-        setHard(
-          data.message.data.matchedUser.submitStats.acSubmissionNum[3].count,
-        );
-        setAll(
-          data.message.data.matchedUser.submitStats.acSubmissionNum[0].count,
-        );
       } catch (err) {
         if (err.name !== "AbortError") {
           console.error(err);
@@ -101,23 +87,21 @@ const Leetcode = () => {
                   <div className="mt-10">
                     <div className="text-2xl w-full flex justify-center items-center mt-6 gap-4">
                       <SiLeetcode size={30} />
-                      <p className="mr-6">
-                        {leetcodeData.message.data.matchedUser.profile.realName}
-                      </p>
+                      <p className="mr-6">Hamsaraj V C</p>
                       <FaRankingStar className="text-red-400" size={30} />
-                      <p className="text-red-400">
-                        {leetcodeData.message.data.matchedUser.profile.ranking}
-                      </p>
+                      <p className="text-red-400">{leetcodeData.rank}</p>
                     </div>
                   </div>
                   <div className="w-full h-fit flex flex-col justify-center items-center gap-6 mt-8">
                     <div className="w-full flex gap-4 justify-center items-center">
                       <div className="w-fit h-10 py-2 px-4 border border-blue-400 rounded-xl">
-                        <p>Solved : {all}</p>
+                        <p>Solved : {leetcodeData.solved}</p>
                       </div>
                       <div className="w-[60%] h-3 bg-green-50 rounded-xl">
                         <div
-                          style={{ width: `${(all / 3973) * 100}%` }}
+                          style={{
+                            width: `${(leetcodeData.solved / 3973) * 100}%`,
+                          }}
                           className="h-full bg-purple-400 rounded-xl"
                         ></div>
                       </div>
@@ -125,11 +109,13 @@ const Leetcode = () => {
                     </div>
                     <div className="w-full flex gap-4 justify-center items-center">
                       <div className="w-fit h-fit py-2 px-4 border border-green-400 rounded-xl">
-                        <p>Easy : {easy}</p>
+                        <p>Easy : {leetcodeData.easy}</p>
                       </div>
                       <div className="w-[60%] h-3 bg-green-50 rounded-xl">
                         <div
-                          style={{ width: `${(easy / 951) * 100}%` }}
+                          style={{
+                            width: `${(leetcodeData.easy / 951) * 100}%`,
+                          }}
                           className="h-full bg-green-400 rounded-xl"
                         ></div>
                       </div>
@@ -137,11 +123,13 @@ const Leetcode = () => {
                     </div>
                     <div className="w-full flex gap-4 justify-center items-center">
                       <div className="w-fit h-fit py-2 px-4 border border-yellow-400 rounded-xl">
-                        <p>Medium : {medium}</p>
+                        <p>Medium : {leetcodeData.medium}</p>
                       </div>
                       <div className="w-[60%] h-3 bg-green-50 rounded-xl">
                         <div
-                          style={{ width: `${(medium / 2074) * 100}%` }}
+                          style={{
+                            width: `${(leetcodeData.medium / 2074) * 100}%`,
+                          }}
                           className="h-full bg-yellow-400 rounded-xl"
                         ></div>
                       </div>
@@ -149,11 +137,13 @@ const Leetcode = () => {
                     </div>
                     <div className="w-full flex gap-4 justify-center items-center">
                       <div className="w-fit h-fit py-2 px-4 border border-red-400 rounded-xl">
-                        <p>Hard : {hard}</p>
+                        <p>Hard : {leetcodeData.hard}</p>
                       </div>
                       <div className="w-[60%] h-3 bg-green-50 rounded-xl">
                         <div
-                          style={{ width: `${(hard / 948) * 100}%` }}
+                          style={{
+                            width: `${(leetcodeData.hard / 948) * 100}%`,
+                          }}
                           className="h-full bg-red-400 rounded-xl"
                         ></div>
                       </div>
@@ -184,7 +174,7 @@ const Leetcode = () => {
                   <div className="flex justify-center items-center h-fit mt-10 gap-10 ">
                     <img
                       className="w-24 h-24 rounded-full mr-6"
-                      src={githubData.message.avatar_url}
+                      src="https://avatars.githubusercontent.com/u/231910369?v=4"
                     ></img>
                     <div>
                       <p className="text-3xl text-center">Hamsaraj V C</p>
@@ -193,14 +183,14 @@ const Leetcode = () => {
                       </p>
                     </div>
                     <div className="w-fit h-fit py-2 px-4 border border-blue-400 rounded-xl">
-                      <p>Repositories : {githubData.repos}</p>
+                      <p>Repositories : {githubData.message.repos}</p>
                     </div>
                     <div className="w-fit h-fit py-2 px-4 border border-blue-400 rounded-xl">
-                      <p>Followers : {githubData.followers}</p>
+                      <p>Followers : {githubData.message.followers}</p>
                     </div>
                   </div>
                   <div className="w-full h-fit gap-8 flex justify-center items-center text-gray-400 px-24">
-                    Bio : {githubData.bio}
+                    Bio : {githubData.message.bio}
                   </div>
                   <div className="w-full h-fit">
                     <a
