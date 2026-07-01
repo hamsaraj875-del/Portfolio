@@ -22,8 +22,8 @@ const Leetcode = () => {
     const fetchLeetcodeData = async () => {
       try {
         setLoader(true);
-        const res = await fetch("http://localhost:3000/leetcode", { signal });
-        const res1 = await fetch("http://localhost:3000/github", { signal });
+        const res = await fetch("https://portfolio-server-57h1.onrender.com/leetcode", { signal });
+        const res1 = await fetch("https://portfolio-server-57h1.onrender.com/github", { signal });
         const data = await res.json();
         const data1 = await res1.json();
         setGithubData(data1);

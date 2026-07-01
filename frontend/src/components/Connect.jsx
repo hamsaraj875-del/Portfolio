@@ -20,7 +20,7 @@ const Connect = () =>{
 
     const data = {name,email,subject,description};
 
-    const response = await fetch("http://localhost:3000/connecter",{
+    const response = await fetch("https://portfolio-server-57h1.onrender.com/connecter",{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(data)
