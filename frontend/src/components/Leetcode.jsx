@@ -204,7 +204,7 @@ const Leetcode = () => {
                         ))
                       }
                     </div>
-                    <div className="w-[50%] h-60 overflow-y-auto space-y-3 pr-2">
+                    <div className="w-[50%] h-60 overflow-y-auto space-y-3 pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">
                       {githubData.repoList.map((repo) => (
                         <div
                           key={repo.url}
