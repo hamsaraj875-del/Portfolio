@@ -38,7 +38,9 @@ const github = async () => {
       }
       const name = rep.name;
       const url = rep.html_url;
-      list.push({ name: rep.name, url: url });
+      if(name!="chandra"){
+        list.push({ name: rep.name, url: url });
+      }
     }
 
     await githubDatabase.findOneAndUpdate(

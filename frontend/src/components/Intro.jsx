@@ -62,7 +62,13 @@ const Intro = () => {
               </div>
             </div>
             <div>
-              <img src="/img.png"></img>
+              <motion.div
+              initial={{ opacity: 0, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}>
+                <img className="flex-shrink-0 object-cover w-100 h-100 border overflow-hidden border-gray-600 rounded-full mt-20" src="/img.png"></img>
+              </motion.div>
             </div>
           </div>
         </div>

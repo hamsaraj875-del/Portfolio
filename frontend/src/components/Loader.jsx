@@ -3,12 +3,11 @@ import "../App.css";
 const Loader = () =>{
   return(
   <>
-  <div className="loadHolder mt-10 mb-4">
+  <div className="loadHolder">
     <div className="outerLoader">
       <div className="innerLoader"></div>
     </div>
   </div>
-  <p>Loading ...</p>
   </>
   )
 }

@@ -9,11 +9,8 @@ const Leetcode = () => {
   const [leetcodeData, setLeetcodeData] = useState("");
   const [loader, setLoader] = useState(true);
   const [githubData, setGithubData] = useState("");
-  const [easy, setEasy] = useState("");
-  const [medium, setMedium] = useState("");
-  const [hard, setHard] = useState("");
-  const [all, setAll] = useState("");
-  const [codeTab, setCodetab] = useState("github");
+  const [total,setTotal] = useState(0);
+  const [codeTab, setCodetab] = useState("leetcode");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -26,7 +23,9 @@ const Leetcode = () => {
         const res1 = await fetch("https://portfolio-server-57h1.onrender.com/github", { signal });
         const data = await res.json();
         const data1 = await res1.json();
-        setGithubData(data1);
+        setGithubData(data1.message);
+        console.log(data1.message);
+        setTotal(Object.values(data1.message.language).reduce((a, b) => a + b, 0));
         setLeetcodeData(data.message);
         setLoader(false);
       } catch (err) {
@@ -52,9 +51,9 @@ const Leetcode = () => {
         viewport={{ once: false }}
       >
         <div className="w-full h-fit mt-40 mb-40 justify-center items-center">
-          <p className="w-full h-fit text-4xl font-bold font-mono text-center bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            Conding Profiles
-          </p>
+          <div className="w-full h-fit flex items-center justify-center">
+            <p className="text-4xl w-fit h-fit font-bold font-mono text-center bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent" >Coding Profiles</p>
+          </div>
           <hr className="bg-gradient-to-r from-purple-500 to-blue-500 mt-10 ml-30 mr-30 h-1"></hr>
           <div className="flex flex-col h-fit  py-12 justify-center items-center  bg-[#09152d] mt-12 ml-30 mr-30 rounded-xl">
             <p className="border border-blue-500 rounded-xl px-2 py-2">
@@ -74,7 +73,7 @@ const Leetcode = () => {
                 Github
               </button>
             </div>
-            {loader && <Loader />}
+            {loader && <Loader className="mt-8" />}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,10 +166,10 @@ const Leetcode = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: false }}
-              className="w-full"
+              className="w-full h-fit"
             >
               {githubData && codeTab === "github" && (
-                <div className="w-full h-150 flex flex-col gap-8">
+                <div className="w-full h-fit flex flex-col gap-8">
                   <div className="flex justify-center items-center h-fit mt-10 gap-10 ">
                     <img
                       className="w-24 h-24 rounded-full mr-6"
@@ -183,14 +182,49 @@ const Leetcode = () => {
                       </p>
                     </div>
                     <div className="w-fit h-fit py-2 px-4 border border-blue-400 rounded-xl">
-                      <p>Repositories : {githubData.message.repos}</p>
+                      <p>Repositories : {githubData.repos}</p>
                     </div>
                     <div className="w-fit h-fit py-2 px-4 border border-blue-400 rounded-xl">
-                      <p>Followers : {githubData.message.followers}</p>
+                      <p>Followers : {githubData.followers}</p>
                     </div>
                   </div>
                   <div className="w-full h-fit gap-8 flex justify-center items-center text-gray-400 px-24">
-                    Bio : {githubData.message.bio}
+                    Bio : {githubData.bio}
+                  </div>
+                  <div className="flex justify-evenly" >
+                    <div className="w-[50%] text-gray-400 px-30 h-fit flex-col gap-4 items-center  rounded-xl flex" >
+                      {
+                        Object.entries(githubData.language).map(([language,byte])=>(
+                        <div className="w-full h-4 gap-4 flex justify-start items-center">
+                          <p className="w-20" >{language} :</p>
+                          <div className="h-4 bg-gradient-to-r from-blue-600 to-purple-600 border border-gray-700 rounded-xl" style={{width:`${(byte/total)*100}%`}}>
+                          </div>
+                          <p>{((byte/total)*100).toFixed(2)} %</p>
+                        </div>
+                        ))
+                      }
+                    </div>
+                    <div className="w-[50%] h-60 overflow-y-auto space-y-3 pr-2">
+                      {githubData.repoList.map((repo) => (
+                        <div
+                          key={repo.url}
+                          className="flex justify-between items-center p-4 rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
+                        >
+                          <div>
+                            <p className="font-semibold">{repo.name}</p>
+                          </div>
+
+                          <a
+                            href={repo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1 border border-purple-500 rounded-lg "
+                          >
+                            View Code
+                          </a>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <div className="w-full h-fit">
                     <a
