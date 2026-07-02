@@ -63,7 +63,7 @@ const github = async () => {
       },
     );
     return {
-      list,
+      reposList:list,
       language: languagePerc,
       bio,
       name,

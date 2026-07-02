@@ -12,11 +12,10 @@ const Hobbies = () => {
         viewport={{ once: false }}
       >
         <div className="mt-40 mb-50">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mb-15">
             <GiMuscleUp className="text-yellow-300 mr-4" size={40} />{" "}
-            <p className="font-mono text-4xl bg-gradient-to-r  from-blue-600 to-purple-600 text-center flex justify-center items-center bg-clip-text text-transparent font-bold">Hobbies</p>
+            <p className="text-5xl bg-gradient-to-r  from-blue-600 to-purple-600 text-center flex justify-center items-center bg-clip-text text-transparent ">Hobbies</p>
           </div>
-          <hr className="bg-gradient-to-r from-purple-500 to-blue-500 m-10 ml-30 mr-30 h-1"></hr>
           <div className="w-full h-100 flex justify-evenly ">
             <div className=" group w-90 h-full rounded-xl transform  bg-[#042326] hover:shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:border-[#022225] hover:bg-[#042816] flex flex-col items-center px-2 ">
               <GiBlackBook

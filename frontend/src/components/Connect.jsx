@@ -23,7 +23,7 @@ const Connect = () =>{
 
     const data = {name,email,subject,description};
 
-    const response = await fetch("https://portfolio-server-57h1.onrender.com/connecter",{
+    const response = await fetch("http://localhost:3000/connecter",{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(data)
@@ -53,7 +53,7 @@ const Connect = () =>{
       transition={{ duration: 0.8 }}
       viewport={{ once: false }}>
       <div className="w-full h-220 flex flex-col justify-center items-center mt-40">
-        <p className="w-fit h-fit text-center text-bold text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent " >Let's Collaborate</p>
+        <p className="w-fit h-fit text-center text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Let's Collaborate</p>
         <hr className="bg-gradient-to-r from-purple-500 to-blue-500 m-10 ml-25 mr-25 h-1"></hr>
         <div className="w-full h-full flex">
           <div className="flex w-[50%] h-full flex-col px-24" >
@@ -110,7 +110,7 @@ const Connect = () =>{
             </form>
           </div>
         </div>
-        {res.length!=0 && <p className="text-xl text-green-400 text-center flex justify-center items-center m-10 "><FaRegHandshake size={30} className="text-green-400 animate-pulse mr-4"/>{res}</p>}
+        {res.length!=0 && <div className="text-lg text-green-400 text-center flex flex-col justify-center items-center m-10"><FaRegHandshake size={50} className="text-green-400 animate-pulse mr-4"/><p>{res}</p></div>}
       </div>
     </motion.div>
   )

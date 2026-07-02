@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 //internal modules
 
@@ -12,10 +13,21 @@ const app = express();
 const githubRoot = require("./githubRoot");
 const leetcodeRoot = require("./leetcodeRoot");
 
+
+//Creating rate limiter
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10,
+  message: {
+    error: "Too many requests, please try again later."
+  }
+});
+
 //Using Routes
 dotenv.config();
 app.use(express.json());
 app.use(cors());
+app.use(limiter);
 
 //Using Routers
 app.use("/github", githubRoot);

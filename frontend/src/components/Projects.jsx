@@ -24,8 +24,7 @@ const Projects = ()=>{
       transition={{ duration: 0.8 }}
       viewport={{ once: false }}>
       <div className="w-full">
-        <div className="w-full flex justify-center items-center h-20" ><p className="w-fit h-full flex font-mono justify-center items-center text-4xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent" ><FcDocument size={40} className="mr-4  text-yellow-300" /> Projects </p></div>
-        <hr className="bg-gradient-to-r from-purple-500 to-blue-500 mb-10 ml-30 mr-30 h-1"></hr>
+        <div className="w-full flex justify-center items-center h-20 mb-18" ><p className="w-fit h-full flex font-mono justify-center items-center text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent" ><FcDocument size={40} className="mr-4  text-yellow-300" /> Projects </p></div>
         <div className="flex w-full h-fit flex-wrap justify-center items-center flex justify-center items-center gap-8 ">
             {list.map((item,index)=><motion.div
               className="w-fit flex h-fit flex-wrap  justify-center items-center f gap-8 "
