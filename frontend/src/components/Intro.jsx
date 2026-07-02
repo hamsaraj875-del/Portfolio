@@ -22,7 +22,7 @@ const Intro = () => {
             BACKEND • FULL STACK • JAVA
           </p>
 
-          <h1 className="text-6xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h1 className="text-6xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             HAMSARAJ V.C
           </h1>
 
@@ -72,7 +72,8 @@ const Intro = () => {
           <div className="flex flex-wrap gap-5">
 
             <a
-              href="/resume.pdf"
+              href="/Hamsaraj.pdf"
+              target="_blank"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:scale-105 transition"
             >
               <HiOutlineDocumentDownload size={22} />
