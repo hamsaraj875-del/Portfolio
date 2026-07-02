@@ -32,7 +32,7 @@ const Projects = ()=>{
                 whileInView={{opacity:1,y:0}}
                 transition={{duration:0.8}}
                 viewport={{once:false}}>
-                <div key={index} className="group w-140 h-120 pb-2 border border-gray-800 hover:bg-gradient-to-br transform from-[#2e1d55] to-[#1f1339] hover:border-purple-500 rounded-xl hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 " >
+                <div key={index} className="group w-140 h-120 pb-2 border border-gray-800 hover:bg-gradient-to-br transform from-[#2e1d55] to-[#1f1339] hover:border-purple-500 rounded-xl hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 hover:z-100" >
                   <img className="rounded-t-xl h-[65%] w-full" src= {item.projectImg} alt={item.projectImg} ></img>
                   <p className="font-mono h-[5%] text-center text-xl m-4 group-hover:text-purple-500 transition-transform group-hover:scale-120" >{item.projectName}</p>
                   <p className="px-4 text-center h-[15%] text-gray-400" >{item.projectDescription}</p>
