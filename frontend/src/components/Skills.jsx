@@ -20,8 +20,8 @@ const Skills = ()=>{
       transition={{ duration: 0.8 }}
       viewport={{ once: false }}>
       <div className="w-full h-fit">
-        <div className="justify-center items-center flex mb-15"><SiThunderstore className="text-yellow-300 mr-4" size={40} /><p className="font-mono text-5xl bg-gradient-to-r from-purple-600 to-blue-600 text-center flex justify-center items-center bg-clip-text text-transparent font-bold">Tech Stack</p></div>
-        <div className="animate-scroll hidden md:flex text-xl gap-12 justify-center items-center  py-8">
+        <div className="justify-center items-center flex mb-15"><SiThunderstore className="text-yellow-300 mr-4" size={40} /><p className="w-fit h-fit text-center text-3xl md:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Tech Stack</p></div>
+        <div className="flex flex-wrap text-xl gap-12 justify-center items-center  py-8">
           {language.map((item,index)=>{
             const Icon = item.tag
             return(
@@ -29,7 +29,7 @@ const Skills = ()=>{
             )
           })}
         </div>
-        <div className=" hidden md:flex text-xl gap-12 justify-center items-center py-8">
+        <div className=" flex flex-wrap text-xl gap-12 justify-center items-center py-8">
           {technology.map((item,index)=>{
             const Icon = item.tag
             return(
@@ -37,7 +37,7 @@ const Skills = ()=>{
             )
           })}
         </div>
-        <div className=" hidden md:flex text-xl gap-12 justify-center items-center py-8">
+        <div className=" flex flex-wrap text-xl gap-12 justify-center items-center py-8">
           {tool.map((item,index)=>{
             const Icon = item.tag
             return(

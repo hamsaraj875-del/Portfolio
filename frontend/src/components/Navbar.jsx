@@ -1,12 +1,10 @@
-import {
-  FaHome,
-  FaUser,
-  FaProjectDiagram,
-} from "react-icons/fa";
+import {FaHome,FaUser,FaProjectDiagram,} from "react-icons/fa";
 import { MdOutlineContactMail } from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
+import {useState} from "react";
 
 const Navbar = () => {
+  const [isOpen,setIsOpen] = useState(false);
   return (
     <nav className="fixed z-200 mb-24 top-5 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center font-['Poppins']">
       <div
@@ -87,12 +85,19 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-
-        {/* Mobile Menu Button */}
-        <button className="md:hidden text-white text-3xl hover:text-purple-400 transition">
-          ☰
+        <button onClick={()=>setIsOpen(!isOpen)} className="md:hidden text-white text-3xl hover:text-purple-400 transition">
+          {isOpen?'✕':'☰'}
         </button>
       </div>
+      {isOpen && (
+      <div className="md:hidden border border-gray-700 absolute top-15 right-8 w-[30%] bg-black flex flex-col items-center py-6 gap-6 rounded-b-2xl">
+        <a href="#Intro" className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700" onClick={() => setIsOpen(false)}>Home</a>
+        <a href="#About" className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700"  onClick={() => setIsOpen(false)}>About</a>
+        <a href="#Skills" className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700"  onClick={() => setIsOpen(false)}>Skills</a>
+        <a href="#Projects" className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700"  onClick={() => setIsOpen(false)}>Projects</a>
+        <a href="#Contact" className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700"  onClick={() => setIsOpen(false)}>Contact</a>
+      </div>
+    )}
     </nav>
   );
 };

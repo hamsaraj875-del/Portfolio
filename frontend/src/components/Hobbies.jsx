@@ -12,13 +12,15 @@ const Hobbies = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
       >
-        <div className="mt-40 mb-50">
+        <div className="mt-24 md:mt-40 mb-24 md:mb-50 px-4">
           <div className="flex justify-center items-center mb-15">
             <GiMuscleUp className="text-yellow-300 mr-4" size={40} />{" "}
-            <p className="text-5xl bg-gradient-to-r  from-blue-600 to-purple-600 text-center flex justify-center items-center bg-clip-text text-transparent ">Hobbies</p>
+            <p className="w-fit h-fit text-center text-3xl md:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Hobbies</p>
+            
           </div>
-          <div className="w-full h-fit flex flex-wrap gap-6 justify-evenly ">
-            <div className=" group w-90 h-100 rounded-xl transform  bg-[#042326] hover:shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:border-[#022225] hover:bg-[#042816] flex flex-col items-center px-2 ">
+          <hr className="bg-gradient-to-r from-purple-500 to-blue-500 my-10 w-3/4 md:w-[80%] mx-auto h-1"></hr>
+          <div className="w-full h-fit flex flex-wrap gap-6 justify-center lg:justify-evenly">
+            <div className="group w-full max-w-[360px] h-100 rounded-xl transform  bg-[#042326] hover:shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:border-[#022225] hover:bg-[#042816] flex flex-col items-center px-2 ">
               <GiBlackBook
                 className=" h-[50%] border-green-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-green-400 group-hover:drop-shadow-[0_0_30px_rgb(187,247,208)]"
                 size={50}
@@ -32,7 +34,7 @@ const Hobbies = () => {
                 learn something new every day.
               </div>
             </div>
-            <div className="group w-90 h-100 bg-[#1a102e] rounded-xl transform hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] hover:border-[#1a102e] hover:bg-[#1f1339] flex flex-col items-center px-2">
+            <div className="group w-full max-w-[360px] h-100 bg-[#1a102e] rounded-xl transform hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] hover:border-[#1a102e] hover:bg-[#1f1339] flex flex-col items-center px-2">
               <CgMusic
                 className=" border-green-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-purple-500 group-hover:drop-shadow-[0_0_20px_rgb(168,85,247)] h-[50%]"
                 size={50}
@@ -46,7 +48,7 @@ const Hobbies = () => {
                 greater focus and productivity.
               </div>
             </div>
-            <div className="group w-90 h-100 bg-[#09152d] hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] rounded-xl transform hover:border-[#09152d] hover:bg-[#071633] flex flex-col items-center px-2">
+            <div className="group w-full max-w-[360px] h-100 bg-[#09152d] hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] rounded-xl transform hover:border-[#09152d] hover:bg-[#071633] flex flex-col items-center px-2">
               <FaComputer
                 className=" border-blue-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-blue-500 group-hover:drop-shadow-[0_0_20px_rgb(168,85,247)] h-[50%]"
                 size={50}
@@ -61,7 +63,7 @@ const Hobbies = () => {
                 problems.
               </div>
             </div>
-            <div className="group w-90 h-100 bg-[#2b1606] hover:shadow-[0_0_30px_rgba(249,115,22,0.25)] rounded-xl transform hover:border-[#2b1606] hover:bg-[#3a1d08] flex flex-col items-center px-2">
+            <div className="group w-full max-w-[360px] h-100 bg-[#2b1606] hover:shadow-[0_0_30px_rgba(249,115,22,0.25)] rounded-xl transform hover:border-[#2b1606] hover:bg-[#3a1d08] flex flex-col items-center px-2">
               <BiCricketBall
                 className="border-orange-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-orange-500 group-hover:drop-shadow-[0_0_20px_rgb(251,146,60)] h-[50%]"
                 size={50}

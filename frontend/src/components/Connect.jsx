@@ -52,28 +52,28 @@ const Connect = () =>{
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: false }}>
-      <div className="w-full h-220 flex flex-col justify-center items-center mt-40">
-        <p className="w-fit h-fit text-center text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Let's Collaborate</p>
-        <hr className="bg-gradient-to-r from-purple-500 to-blue-500 m-10 ml-25 mr-25 h-1"></hr>
-        <div className="w-full h-full flex">
-          <div className="flex w-[50%] h-full flex-col px-24" >
-            <p className="w-full h-fit text-xl py-4"> Let's get in touch </p>
+      <div className="w-full min-h-screen flex flex-col justify-center items-center mt-20 md:mt-40 px-4">
+        <p className="w-fit h-fit text-center text-3xl md:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Let's Collaborate</p>
+        <hr className="bg-gradient-to-r from-purple-500 to-blue-500 my-10 w-3/4 md:w-[80%] h-1"></hr>
+        <div className="w-full flex flex-col lg:flex-row">
+          <div className="flex w-full lg:w-[50%] flex-col px-6 md:px-12 lg:px-24" >
+            <p className="w-full h-fit text-lg md:text-xl py-4"> Let's get in touch </p>
             <p className="text-gray-400 mb-10" >I'm always eager to connect with fellow developers, innovators, and creators to exchange ideas, collaborate on exciting projects, and turn extraordinary concepts into reality.</p>
-            <div className="group w-120 h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-10  pr-2 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
+            <div className="group w-full h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-6 md:mt-10  pr-2 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
               <div className="px-4 py-1 flex justify-center items-center" ><HiOutlineMailOpen className="text-purple-600 mr-2 " size={30} /></div>
               <div>
                 <p className="w-full h-fit" >Email</p>
                 <p className="w-full h-fit text-gray-400" >hamsaraj531@gmail.com</p>
               </div>
             </div>
-            <div className="w-120 h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-10  px-1 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
+            <div className="w-full h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-6 md:mt-10  px-1 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
               <div className="px-4 py-1 flex justify-center items-center" ><FaPhoneVolume className="text-purple-600 mr-2" size={30} /></div>
               <div>
                 <p className="w-full h-fit" >Phone</p>
                 <p className="w-full h-fit text-gray-400" >8073365276</p>
               </div>
             </div>
-            <div className="w-120 h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-10  px-1 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
+            <div className="w-full h-fit flex border border-gray-700 border-l-4 border-l-blue-500  mt-6 md:mt-10  px-1 py-2 transition-all duration-200 rounded-lg hover:translate-x-1.5" >
               <div className="px-4 py-1 flex justify-center items-center" ><FaLocationArrow className="text-purple-600 mr-2" size={30} /></div>
               <div>
                 <p className="w-full h-fit" >Location</p>
@@ -81,8 +81,8 @@ const Connect = () =>{
               </div>
             </div>
           </div>
-          <div className="flex w-[50%] h-full flex-col px-24" >
-            <p className="w-full h-fit text-xl py-4"> Reach Out </p>
+          <div className="flex w-full lg:w-[50%] flex-col px-6 md:px-12 lg:px-24 mt-12 lg:mt-0" >
+            <p className="w-full h-fit text-lg md:text-xl py-4"> Reach Out </p>
             <p className="text-gray-400 mb-10" >Together, Let's Build Something Remarkable.</p>
 
             <form className="flex flex-col gap-8" onSubmit={connectDetails}>
@@ -110,7 +110,7 @@ const Connect = () =>{
             </form>
           </div>
         </div>
-        {res.length!=0 && <div className="text-lg text-green-400 text-center flex flex-col justify-center items-center m-10"><FaRegHandshake size={50} className="text-green-400 animate-pulse mr-4"/><p>{res}</p></div>}
+        {res.length!=0 && <div className="text-base md:text-lg text-green-400 text-center flex flex-col justify-center items-center my-10 px-4"><FaRegHandshake size={50} className="text-green-400 animate-pulse mr-4"/><p>{res}</p></div>}
       </div>
     </motion.div>
   )
