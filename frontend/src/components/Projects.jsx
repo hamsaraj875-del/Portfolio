@@ -79,7 +79,7 @@ const Projects = () => {
                   <img
                     src={item.projectImg}
                     alt={item.projectName}
-                    className="w-full h-56 sm:h-64 object-cover"
+                    className="w-full h-56 sm:h-80 object-cover"
                   />
 
                   <p className="text-lg sm:text-xl text-center font-mono mt-4 group-hover:text-purple-500 transition-transform group-hover:scale-110">
