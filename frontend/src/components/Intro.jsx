@@ -11,7 +11,7 @@ const Intro = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full min-h-screen flex items-center"
+      className="w-full min-h-screen mt-24 flex items-center"
     >
       <div className="w-full font-sans flex flex-col lg:flex-row items-center justify-between px-8 mb-30 lg:px-24">
 

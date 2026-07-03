@@ -14,7 +14,7 @@ const Footer = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
       >
-        <hr className="border mt-10"></hr>
+        <hr className="mt-10 text-gray-700 border-t border-gray-800 "></hr>
         <div className="w-full h-80 flex justify-center items-center">
           <div className="w-[60%] h-full flex flex-col justify-center items-center gap-6 px-8">
             <p className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent text-3xl font-bold">
@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full text-center text-gray-500 mb-8 border-t border-gray-800 py-4">
+        <div className="w-full text-center text-gray-500 mb-8 py-4">
           © 2026 Hamsaraj V.C. All Rights Reserved.
         </div>
       </motion.div>

@@ -10,7 +10,7 @@ const Leetcode = () => {
   const [loader, setLoader] = useState(true);
   const [githubData, setGithubData] = useState("");
   const [total,setTotal] = useState(0);
-  const [codeTab, setCodetab] = useState("leetcode");
+  const [codeTab, setCodetab] = useState("github");
 
   useEffect(() => {
     const controller = new AbortController();

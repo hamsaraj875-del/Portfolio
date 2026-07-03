@@ -1,48 +1,100 @@
-const Navbar = ()=>{
-  return(
-    <>
-      <nav className=" flex w-full font-['Poppins'] z-50 min-h-20 justify-center items-center fixed bg-black backdrop-blur-md px-10 py-4">
-        <div className="max-w-7xl w-full mx-auto px-2 py-2 flex items-center justify-between">
-          
-          <h1 className="text-2xl font-bold text-white ml-10">
-            Hamsaraj V.C
-          </h1>
+import {
+  FaHome,
+  FaUser,
+  FaProjectDiagram,
+} from "react-icons/fa";
+import { MdOutlineContactMail } from "react-icons/md";
+import { GiSkills } from "react-icons/gi";
 
-          <ul className="hidden md:flex items-center bg-gray-800  px-4 py-2 rounded-xl gap-8 text-white font-medium">
-            <li>
-              <a href="#Intro" className="hover:text-purple-400 transition">
+const Navbar = () => {
+  return (
+    <nav className="fixed z-200 mb-24 top-5 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center font-['Poppins']">
+      <div
+        className="
+        mb-24
+          w-[95%] max-w-6xl
+          flex items-center justify-between
+          px-5 py-3
+          rounded-full
+          bg-[#111827]/80
+          backdrop-blur-xl
+          border border-slate-700/50
+          shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+        "
+      >
+        <h1 className="text-xl font-bold text-white">
+          Hamsaraj V.C
+        </h1>
+
+        <ul className="hidden md:flex items-center gap-2">
+          <li>
+            <a
+              href="#Intro"
+              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 group"
+            >
+              <FaHome className="text-gray-300 group-hover:text-purple-400 text-lg" />
+              <span className="text-white group-hover:text-purple-400">
                 Home
-              </a>
-            </li>
-            <li>
-              <a href="#Footer" className="hover:text-purple-400 transition">
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#About"
+              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 group"
+            >
+              <FaUser className="text-gray-300 group-hover:text-purple-400 text-lg" />
+              <span className="text-white group-hover:text-purple-400">
                 About
-              </a>
-            </li>
-            <li>
-              <a href="#Skills" className="hover:text-purple-400 transition">
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#Skills"
+              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 group"
+            >
+              <GiSkills className="text-gray-300 group-hover:text-purple-400 text-lg" />
+              <span className="text-white group-hover:text-purple-400">
                 Skills
-              </a>
-            </li>
-            <li>
-              <a href="#Projects" className="hover:text-purple-400 transition">
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#Projects"
+              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 group"
+            >
+              <FaProjectDiagram className="text-gray-300 group-hover:text-purple-400 text-lg" />
+              <span className="text-white group-hover:text-purple-400">
                 Projects
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-purple-400 transition">
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#Contact"
+              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 group"
+            >
+              <MdOutlineContactMail className="text-gray-300 group-hover:text-purple-400 text-lg" />
+              <span className="text-white group-hover:text-purple-400">
                 Contact
-              </a>
-            </li>
-          </ul>
-          <button className="md:hidden text-white text-2xl">
-            ☰
-          </button>
+              </span>
+            </a>
+          </li>
+        </ul>
 
-        </div>
-      </nav>
+        {/* Mobile Menu Button */}
+        <button className="md:hidden text-white text-3xl hover:text-purple-400 transition">
+          ☰
+        </button>
+      </div>
+    </nav>
+  );
+};
 
-    </>
-  )
-}
 export default Navbar;
