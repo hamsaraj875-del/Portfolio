@@ -1,11 +1,11 @@
 @import "tailwindcss";
-
-html {
-  scroll-behavior:smooth;
-  background-color:#0a0e1a;
+html,
+body,
+#root {
+  scroll-behavior: smooth;
+  background-color: #b0bac7;
+  min-height: 100%;
 }
-
-/* loader code */
 .loadHolder{
   display:flex;
   justify-content:center;

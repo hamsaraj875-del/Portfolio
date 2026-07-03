@@ -11,7 +11,7 @@ import "./App.css"
 
 export default function App() {
   return (
-    <div className="bg-gradient-to-r from-  text-white">
+    <div className="text-white">
       <section id="Navbar">
         <Navbar id="Navbar"/>
       </section>
@@ -30,10 +30,10 @@ export default function App() {
       <section id="Projects" className="scroll-mt-22">
         <Projects />
       </section>
-      <section id="contact">
+      <section id="Contact">
         <Connect/>
       </section>
-      <section  id="Footer" >
+      <section  id="About" >
         <Footer />
       </section>
       

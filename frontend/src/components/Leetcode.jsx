@@ -53,7 +53,7 @@ const Leetcode = () => {
           <div className="w-full h-fit flex items-center justify-center">
             <p className="text-2xl sm:text-3xl md:text-5xl w-fit h-fit font-mono text-center bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent" >Coding Profiles</p>
           </div>
-          <div className="flex flex-col h-fit py-12 justify-center items-center bg-[#09152d] mt-12 mx-4 md:mx-12 lg:mx-30 rounded-xl">
+          <div className="w-[96%] flex flex-col h-fit py-12 justify-center items-center bg-[#09152d] mt-12 mx-auto rounded-xl">
             <p className="border border-blue-500 rounded-xl px-2 py-2">
               <FaCode size={50} />
             </p>
