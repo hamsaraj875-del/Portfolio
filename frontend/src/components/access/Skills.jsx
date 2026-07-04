@@ -1,16 +1,20 @@
-import "../App.css"
 import { SiMongodb,SiExpress,SiThunderstore,SiAndroidstudio,SiRender } from "react-icons/si";
 import { FaNodeJs,FaJava,FaReact,FaPython } from "react-icons/fa";
 import { TbBrandJavascript,TbFileTypeHtml } from "react-icons/tb";
 import { FaGitAlt,FaGithub } from "react-icons/fa6";
-import { RiTailwindCssFill } from "react-icons/ri";
+import { RiTailwindCssFill,RiBootstrapFill  } from "react-icons/ri";
 import { SiCloudinary } from "react-icons/si";
 import { BsFiletypeCss } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
 import { motion } from "framer-motion";
+
+
+import "../../App.css"
+
+
 const Skills = ()=>{
   const language = [{tag:FaJava,name:"Java"},{tag:TbBrandJavascript,name:"Java Script"},{tag:TbFileTypeHtml,name:"HTML"},{tag:BsFiletypeCss,name:"CSS "},{tag:FaPython,name:"Python"}];
-  const technology = [{tag:SiMongodb,name:"Mongo Db"},{tag:SiExpress,name:"Express"},{tag:FaReact,name:"React"},{tag:FaNodeJs,name:"Node JS"},{tag:RiTailwindCssFill,name:"Tailwind css"}]
+  const technology = [{tag:SiMongodb,name:"Mongo Db"},{tag:SiExpress,name:"Express"},{tag:FaReact,name:"React"},{tag:FaNodeJs,name:"Node JS"},{tag:RiTailwindCssFill,name:"Tailwind css"},{tag:RiBootstrapFill,name:"Bootstrap"}]
   const tool = [{tag:FaGitAlt,name:"Git"},{tag:FaGithub,name:"Github"},{tag:SiCloudinary,name:"Cloudinary"},{tag:TbBrandVscode,name:"VS Code"},{tag:SiAndroidstudio,name:"Android Studio"},{tag:SiRender,name:"Render"}]
   return(
     <>

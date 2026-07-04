@@ -6,39 +6,39 @@ body,
   background-color: #b0bac7;
   min-height: 100%;
 }
-.loadHolder{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.loadHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.outerLoader{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:30px;
-  height:30px;
-  border-top:5px solid rgb(8, 85, 163);
-  border-left:5px solid transparent;
-  border-right:5px solid transparent;
-  border-radius:50%;
-  border-bottom:5px solid rgb(8, 85, 163);
-  animation:rotate 0.7s linear infinite;
+.outerLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-top: 5px solid rgb(8, 85, 163);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-radius: 50%;
+  border-bottom: 5px solid rgb(8, 85, 163);
+  animation: rotate 0.7s linear infinite;
 }
-.innerLoader{
-  width:17px;
-  height:17px;
-  border-left:5px solid rgb(133,24,173);
-  border-top:5px solid transparent;
-  border-right:5px solid rgb(133,24,173);
-  border-bottom:5px solid transparent;
-  border-radius:50%;
-  animation:rotate 0.4s linear infinite reverse;
+.innerLoader {
+  width: 17px;
+  height: 17px;
+  border-left: 5px solid rgb(133, 24, 173);
+  border-top: 5px solid transparent;
+  border-right: 5px solid rgb(133, 24, 173);
+  border-bottom: 5px solid transparent;
+  border-radius: 50%;
+  animation: rotate 0.4s linear infinite reverse;
 }
-@keyframes rotate{
-  0%{
-    transform:rotate(0deg);
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
-  100%{
-    transform:rotate(360deg);
+  100% {
+    transform: rotate(360deg);
   }
 }

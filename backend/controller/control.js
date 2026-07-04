@@ -9,6 +9,7 @@ const dotenv = require("dotenv");
 //internal modules
 
 const database = require("../models/database");
+const projectDatabase = require("../models/project");
 
 
 //setting some functions
@@ -154,3 +155,44 @@ const generateEmail = async (email) => {
     throw err;
   }
 };
+
+
+
+//handling project roots
+
+exports.project=async(req,res,next)=>{
+
+  try{
+    const data = await projectDatabase.find();
+    return res.status(200).json({
+      success:true,
+      message:data
+    });
+  }
+  catch(err){
+    return res.status(500).json({
+      success:false,
+      message:"Server error please try again"
+    })
+  }
+}
+
+//password verification
+exports.verify=(req,res,next)=>{
+  const {password,passkey} = req.body;
+  if(password === process.env.PASSWORD && passkey === process.env.PASS_KEY){
+    req.session.isLoggedIn = true;
+    return res.status(200).json({
+      success:true,
+      message:"You successfully logged in"
+    });
+  }else{
+    req.session.isLoggedIn = false;
+    console.log("not done");
+    return res.status(401).json({
+      success:true,
+      message:"Password or passkey "
+    })
+  }
+
+}
