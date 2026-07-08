@@ -4,21 +4,18 @@ const { check, validationResult } = require("express-validator");
 const sgMail = require("@sendgrid/mail");
 const dotenv = require("dotenv");
 
-
-
 //internal modules
 
 const database = require("../models/database");
 const projectDatabase = require("../models/project");
-
+const skillDatabase = require("../models/skills");
+const leetcodeDatabase = require("../models/leetcode");
+const githubDatabase = require("../models/github");
 
 //setting some functions
 
 dotenv.config();
 sgMail.setApiKey(process.env.EMAIL_API);
-
-
-
 
 //user input validation
 
@@ -73,19 +70,20 @@ exports.userInput = [
       try {
         const data = new database({ name, email, subject, description });
         await data.save();
-        try{
+        try {
           await generateEmail(email);
           return res.status(200).json({
             success: true,
-            message: "Your message has been received by Hamsaraj and he will contact you soon. Please check your email for confirmation, and if you don’t see it, kindly look in your Spam or Junk folder as well. Thanks for connecting!",
+            message:
+              "Your message has been received by Hamsaraj and he will contact you soon. Please check your email for confirmation, and if you don’t see it, kindly look in your Spam or Junk folder as well. Thanks for connecting!",
           });
-        }
-        catch(err){
+        } catch (err) {
           console.log(err);
           return res.status(200).json({
-            success:true,
-            message:"Your message has been sent to Hamsaraj. He will contact you soon. Thanks for connecting!"
-          })
+            success: true,
+            message:
+              "Your message has been sent to Hamsaraj. He will contact you soon. Thanks for connecting!",
+          });
         }
       } catch (err) {
         console.log(err);
@@ -100,10 +98,7 @@ exports.userInput = [
   },
 ];
 
-
-
-
-//email generator 
+//email generator
 
 const generateEmail = async (email) => {
   try {
@@ -149,7 +144,7 @@ const generateEmail = async (email) => {
 
           </div>
         </div>
-      `
+      `,
     });
   } catch (err) {
     throw err;
@@ -158,41 +153,120 @@ const generateEmail = async (email) => {
 
 
 
-//handling project roots
 
-exports.project=async(req,res,next)=>{
+//Display skills 
 
+exports.skills = async(req,res,next)=>{
   try{
-    const data = await projectDatabase.find();
+    const language = await skillDatabase.find({category:"language"});
+    const technology = await skillDatabase.find({category:"technology"});
+    const tool = await skillDatabase.find({category:"tool"});
+    const data = {language,technology,tool};
+
     return res.status(200).json({
       success:true,
-      message:data
-    });
-  }
-  catch(err){
+      message:data,
+    })
+  }catch(err){
+    console.log(err);
     return res.status(500).json({
       success:false,
-      message:"Server error please try again"
+      message:"Server error please try again later"
     })
   }
 }
 
+
+
+
+//handling project roots
+
+exports.project = async (req, res, next) => {
+  try {
+    const data = await projectDatabase.find();
+    return res.status(200).json({
+      success: true,
+      message: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Server error please try again",
+    });
+  }
+};
+
+
+
+
 //password verification
-exports.verify=(req,res,next)=>{
-  const {password,passkey} = req.body;
-  if(password === process.env.PASSWORD && passkey === process.env.PASS_KEY){
+exports.verify = async (req, res, next) => {
+  const { password, passkey } = req.body;
+  if (password === process.env.PASSWORD && passkey === process.env.PASS_KEY) {
     req.session.isLoggedIn = true;
+    console.log("Successfully logged in ");
+    await req.session.save();
+    return res.status(200).json({
+      success: true,
+      message: "You successfully logged in",
+    });
+  } else {
+    console.log("wrong password or passkee");
+    req.session.isLoggedIn = false;
+    await req.session.save();
+    return res.status(401).json({
+      success: false,
+      message: "Invalid Password or passkey ",
+    });
+  }
+};
+
+
+
+//admin verification
+
+exports.adminVerify = (req, res, next) => {
+  console.log("you got a hit bye");
+  console.log(req.session.isLoggedIn);
+  if (req.session.isLoggedIn) {
+    return res.status(200).json({
+      success: true,
+      message: "User logged in",
+    });
+  } else {
+    return res.status(404).json({
+      success: false,
+      message: "Unauthorized. ",
+    });
+  }
+};
+
+
+//sharing data for the dashboard
+
+exports.data =async(req,res,next)=>{
+  try{
+    const project = await projectDatabase.countDocuments();
+    const lanuguages = await skillDatabase.countDocuments({category:"language"});
+    const technologies = await skillDatabase.countDocuments({category:"technology"});
+    const tools = await skillDatabase.countDocuments({category:"tool"});
+    const leetcode = await leetcodeDatabase.findOne({cacheType:"leetcode"});
+    const solved = leetcode.solved;
+    const github = await githubDatabase.findOne({cacheType:"github"});
+    const repositories = github.repos;
+    
+    data = {project,languages,technologies,tools,leetcode,solved,github,repositories}
+
     return res.status(200).json({
       success:true,
-      message:"You successfully logged in"
-    });
-  }else{
-    req.session.isLoggedIn = false;
-    console.log("not done");
-    return res.status(401).json({
-      success:true,
-      message:"Password or passkey "
+      message:data
+    })
+
+  }catch(err){
+    console.log(err);
+    return res.status(500).json({
+      success:false,
+      message:"Server is not responding Please try again later"
     })
   }
-
 }

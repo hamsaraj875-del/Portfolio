@@ -20,14 +20,13 @@ const Hobbies = () => {
           </div>
           <hr className="bg-gradient-to-r from-purple-500 to-blue-500 my-10 w-3/4 md:w-[80%] mx-auto h-1"></hr>
           <div className="w-full h-fit flex flex-wrap gap-6 justify-center lg:justify-evenly">
-            <div className="group w-full max-w-[360px] h-100 rounded-xl transform  bg-[#042326] hover:shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:border-[#022225] hover:bg-[#042816] flex flex-col items-center px-2 ">
+            <div className="group w-full max-w-[360px] h-100 rounded-xl transform  bg-[#042326] group hover:shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:border-[#022225] hover:bg-[#042816] flex flex-col items-center px-2 ">
               <GiBlackBook
-                className=" h-[50%] border-green-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-green-400 group-hover:drop-shadow-[0_0_30px_rgb(187,247,208)]"
+                className="h-[50%] border-green-200 text-center transition-transform duration-200 ease-in group-hover:scale-120 group-hover:text-green-400 group-hover:drop-shadow-[0_0_30px_rgb(187,247,208)]"
                 size={50}
               />
               <div className=" text-xl h-[15%] text-center font-bold transition-transform duration-200 ease-in group-hover:scale-110 group-hover:text-green-400">
-                {" "}
-                Learning{" "}
+                Learning
               </div>
               <div className=" text-gray-400 text-center font-serif">
                 Constantly exploring new ideas, technologies, and skills to

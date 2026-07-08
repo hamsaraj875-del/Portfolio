@@ -17,6 +17,7 @@ const Navbar = () => {
     const data = {password,passkey}
     const response = await fetch("http://localhost:3000/verification",{
       method:'POST',
+      credentials:'include',
       headers:{'content-Type':'application/json'},
       body:JSON.stringify(data)
     });

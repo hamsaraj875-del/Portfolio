@@ -63,8 +63,10 @@ const loginVerify = (req, res, next) => {
 //Using Routes
 dotenv.config();
 app.use(express.json());
-app.use(cors());
-app.use(limiter);
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}));
 
 //Using Routers
 app.use("/github", githubRoot);
@@ -73,9 +75,11 @@ app.use("/leetcode", leetcodeRoot);
 //routers handling
 
 app.post("/connecter", controller.userInput);
+app.get("/skills",controller.skills);
 app.get("/project",controller.project);
-app.post("/verification",loginVerify,controller.verify);
-app.get("/admin",loginVerify,controller.admin);
+app.post("/verification",controller.verify);
+app.post("/adminVerify",loginVerify,controller.adminVerify);
+app.get("/data",loginVerify,controller.data);
 
 mongoose.connect(process.env.DB).then(() => {
   console.log("database is connected successfully");
