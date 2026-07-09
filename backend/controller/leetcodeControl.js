@@ -7,9 +7,6 @@
 const leetcodeDatabase = require("../models/leetcode");
 
 
-
-
-
 //leetcode data fetcher function
 
 const leetcode = async (req, res) => {

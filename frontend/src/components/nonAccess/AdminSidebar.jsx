@@ -1,35 +1,48 @@
-const AdminSidebar = ()=>{
+import {FaChartPie,FaFolderOpen,FaEnvelope,FaCog,FaSignOutAlt,} from "react-icons/fa";
+import { MdEmojiEvents } from "react-icons/md";
+
+const AdminSidebar = ({tab,setTab}) => {
+  const menus = [
+    {
+      name: "Dashboard",
+      icon: <FaChartPie />,
+    },
+    {
+      name: "Projects",
+      icon: <FaFolderOpen />,
+    },
+    {
+      name: "Notification",
+      icon: <FaEnvelope />,
+    },
+    {
+      name: "Updates",
+      icon: <MdEmojiEvents />,
+    },
+  ];
+
   return (
-    <>
-    <aside className="w-64 min-h-screen bg-[#111827] text-white">
-      <div className="p-6 text-2xl font-bold">
-        Portfolio Admin
+    <aside
+      className="fixed top-16 left-0 w-20 md:w-24 lg:w-72 h-[calc(100vh-4rem)] bg-[#111827] border-r border-gray-800 flex flex-col justify-between shadow-xl z-40 transition-all duration-300"
+    >
+      <div>
+        <nav className="mt-5 px-3 space-y-2">
+          {menus.map((menu) => (
+            <button
+            onClick={()=>setTab(menu.name)}
+              key={menu.name}
+              className={`group flex w-full items-center justify-center lg:justify-start gap-4 rounded-xl px-0 lg:px-5 py-4 text-gray-300 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:text-white
+              ${tab===menu.name?'from-purple-600 hover:to-blue-500 hover:text-white':''}`}
+            >
+              <span className="text-xl">{menu.icon}</span>
+
+              <span className="hidden lg:block font-medium">{menu.name}</span>
+            </button>
+          ))}
+        </nav>
       </div>
-
-      <nav className="flex flex-col">
-        <button className="p-4 hover:bg-gray-700 text-left">
-          Dashboard
-        </button>
-
-        <button className="p-4 hover:bg-gray-700 text-left">
-          Projects
-        </button>
-
-        <button className="p-4 hover:bg-gray-700 text-left">
-          Messages
-        </button>
-
-        <button className="p-4 hover:bg-gray-700 text-left">
-          Settings
-        </button>
-
-        <button className="p-4 hover:bg-red-600 text-left">
-          Logout
-        </button>
-      </nav>
     </aside>
-    </>
-  )
-}
+  );
+};
 
 export default AdminSidebar;

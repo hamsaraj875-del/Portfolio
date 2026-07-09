@@ -33,7 +33,6 @@ const Skills = ()=>{
         const response = await fetch("http://localhost:3000/skills",{signal});
         const data = await response.json();
         setResult(data.message);
-        console.log(data.message);
       }catch(err){
         if(err.name != "AbortError"){
           setError("Fetch failed Try again later!");

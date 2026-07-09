@@ -73,13 +73,22 @@ app.use("/github", githubRoot);
 app.use("/leetcode", leetcodeRoot);
 
 //routers handling
-
+//Ouput values
 app.post("/connecter", controller.userInput);
 app.get("/skills",controller.skills);
 app.get("/project",controller.project);
 app.post("/verification",controller.verify);
 app.post("/adminVerify",loginVerify,controller.adminVerify);
-app.get("/data",loginVerify,controller.data);
+app.post("/data",loginVerify,controller.data);
+app.post("/logout",loginVerify,controller.logout);
+
+
+//input values
+app.post("/add",loginVerify,controller.add);
+
+//web health detector
+
+app.post("/health",loginVerify,controller.health);
 
 mongoose.connect(process.env.DB).then(() => {
   console.log("database is connected successfully");

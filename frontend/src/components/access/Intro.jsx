@@ -14,10 +14,7 @@ const Intro = () => {
       className="w-full min-h-screen mt-24 flex items-center"
     >
       <div className="w-full font-sans flex flex-col lg:flex-row items-center justify-between px-8 mb-30 lg:px-24">
-
-
         <div className="flex flex-col gap-8 max-w-3xl">
-
           <p className="text-blue-400 font-semibold tracking-[4px] text-lg">
             BACKEND • FULL STACK • JAVA
           </p>
@@ -37,14 +34,11 @@ const Intro = () => {
             <span className="text-cyan-400 font-semibold"> MongoDB</span>,
             <span className="text-purple-400 font-semibold"> Python</span>, and
             <span className="text-yellow-400 font-semibold"> Java</span>.
-            Passionate about backend architecture, REST APIs,
-            authentication, caching and developing software that solves
-            real-world problems.
+            Passionate about backend architecture, REST APIs, authentication,
+            caching and developing software that solves real-world problems.
           </p>
 
-
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-
             <div className="rounded-xl border border-blue-500/30 bg-white/5 backdrop-blur-md p-5">
               <h3 className="text-3xl font-bold text-blue-400">9.85</h3>
               <p className="text-gray-400 text-sm mt-1">CGPA</p>
@@ -64,13 +58,11 @@ const Intro = () => {
               <h3 className="text-3xl font-bold text-green-400">MERN</h3>
               <p className="text-gray-400 text-sm mt-1">Tech Stack</p>
             </div>
-
           </div>
 
           {/* Buttons */}
 
           <div className="flex flex-wrap gap-5">
-
             <a
               href="/Hamsaraj.pdf"
               target="_blank"
@@ -109,9 +101,7 @@ const Intro = () => {
               <SiLeetcode size={20} />
               LeetCode
             </a>
-
           </div>
-
         </div>
 
         {/* RIGHT */}
@@ -122,7 +112,6 @@ const Intro = () => {
           transition={{ duration: 0.8 }}
           className="relative mt-20 lg:mt-0"
         >
-
           <div className="absolute inset-0 bg-blue-500/20 blur-[120px] rounded-full"></div>
 
           <img
@@ -130,9 +119,7 @@ const Intro = () => {
             alt="Hamsaraj"
             className="relative w-[380px] lg:w-[430px] h-[380px] lg:h-[430px] object-cover rounded-full border border-blue-500/30 shadow-2xl"
           />
-
         </motion.div>
-
       </div>
     </motion.div>
   );

@@ -204,7 +204,6 @@ exports.verify = async (req, res, next) => {
   const { password, passkey } = req.body;
   if (password === process.env.PASSWORD && passkey === process.env.PASS_KEY) {
     req.session.isLoggedIn = true;
-    console.log("Successfully logged in ");
     await req.session.save();
     return res.status(200).json({
       success: true,
@@ -226,8 +225,6 @@ exports.verify = async (req, res, next) => {
 //admin verification
 
 exports.adminVerify = (req, res, next) => {
-  console.log("you got a hit bye");
-  console.log(req.session.isLoggedIn);
   if (req.session.isLoggedIn) {
     return res.status(200).json({
       success: true,
@@ -247,7 +244,7 @@ exports.adminVerify = (req, res, next) => {
 exports.data =async(req,res,next)=>{
   try{
     const project = await projectDatabase.countDocuments();
-    const lanuguages = await skillDatabase.countDocuments({category:"language"});
+    const languages = await skillDatabase.countDocuments({category:"language"});
     const technologies = await skillDatabase.countDocuments({category:"technology"});
     const tools = await skillDatabase.countDocuments({category:"tool"});
     const leetcode = await leetcodeDatabase.findOne({cacheType:"leetcode"});
@@ -269,4 +266,43 @@ exports.data =async(req,res,next)=>{
       message:"Server is not responding Please try again later"
     })
   }
+}
+
+
+
+exports.add=(req,res,next)=>{
+  const data = req.body;
+}
+
+
+
+
+//logout from the admin 
+
+exports.logout=(req,res,next)=>{
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Logout failed",
+      });
+    }
+
+    res.clearCookie("connect.sid");
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  });
+}
+
+
+
+//web health detector
+
+exports.health=(req,res,next)=>{
+  return res.status(200).json({
+    status:ok,
+  })
 }
