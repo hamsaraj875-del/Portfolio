@@ -80,7 +80,7 @@ const loginVerify = (req, res, next) => {
 dotenv.config();
 app.use(express.json());
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:"https://portfolio-frontend-vjld.onrender.com3",
   credentials:true
 }));
 app.use(multer({storage,fileFilter}).single("projectImg"));
