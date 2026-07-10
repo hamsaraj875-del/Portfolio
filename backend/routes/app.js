@@ -114,18 +114,18 @@ app.use("/leetcode", leetcodeRoot);
 
 //routers handling
 //Ouput values
-app.post("/connecter", controller.userInput);
-app.get("/skills",controller.skills);
-app.get("/project",controller.project);
-app.post("/verification",controller.verify);
-app.post("/adminVerify",loginVerify,controller.adminVerify);
-app.post("/data",loginVerify,controller.data);
-app.post("/notification",loginVerify,controller.notification);
-app.post("/logout",loginVerify,controller.logout);
+app.post("/connecter",limiter, controller.userInput);
+app.get("/skills",limiter,controller.skills);
+app.get("/project",limiter,controller.project);
+app.post("/verification",limiter,controller.verify);
+app.post("/adminVerify",limiter,loginVerify,controller.adminVerify);
+app.post("/data",limiter,loginVerify,controller.data);
+app.post("/notification",limiter,loginVerify,controller.notification);
+app.post("/logout",limiter,loginVerify,controller.logout);
 
 
 //input values
-app.post("/add",loginVerify,controller.add);
+app.post("/add",loginVerify,limiter,controller.add);
 
 //web health detector
 
