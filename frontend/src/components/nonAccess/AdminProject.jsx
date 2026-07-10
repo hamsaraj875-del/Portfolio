@@ -7,20 +7,26 @@ const AdminProject=()=>{
   const [projectCode,setProjectCode] = useState("");
   const [projectImg,setProjectImg] = useState(null);
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {projectName,projectDescription,projectLink,projectCode,projectImg};
+    const formData = new FormData();
 
-    const response = fetch("http://localhost:3000/add",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      bodoy:JSON.stringfy(data),
-      credentials:"include",
-    })
+    formData.append("projectName", projectName);
+    formData.append("projectDescription", projectDescription);
+    formData.append("projectLink", projectLink);
+    formData.append("projectCode", projectCode);
+    formData.append("projectImg", projectImg);
 
-  }
+    const response = await fetch("http://localhost:3000/add", {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    });
 
+    const result = await response.json();
+    console.log(result);
+  };
   
   return(
     <>
@@ -42,7 +48,7 @@ const AdminProject=()=>{
                 type="text"
                 name="name"
                 value={projectName}
-                onChange={()=>setProjectName(e.target.value)}
+                onChange={(e)=>setProjectName(e.target.value)}
                 placeholder="Enter project name"
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500"
                 required
@@ -88,8 +94,8 @@ const AdminProject=()=>{
               <input
                 type="url"
                 name="githubLink"
-                value={projectLink}
-                onChange={()=>setProjectCode(e.target.value)}
+                value={projectCode}
+                onChange={(e)=>setProjectCode(e.target.value)}
                 placeholder="https://github.com/..."
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500"
                 required
@@ -104,7 +110,7 @@ const AdminProject=()=>{
               <input
                 type="file"
                 accept="image/*"
-                onChange={()=>setProjectImg(e.target.files[0])}
+                onChange={(e)=>setProjectImg(e.target.files[0])}
                 className="w-full rounded-lg border border-dashed border-gray-600 bg-[#1f2937] p-3 text-gray-300 file:mr-4 file:rounded-md file:border-0 file:bg-purple-600 file:px-4 file:py-2 file:text-white hover:file:bg-purple-700"
                 required
               />

@@ -65,7 +65,7 @@ const Projects = () => {
                   viewport={{ once: false }}
                 >
                   <div
-                    className="group w-full max-w-[560px] min-h-[560px] border border-gray-800 rounded-xl overflow-hidden hover:bg-gradient-to-br from-[#2e1d55] to-[#1f1339] hover:border-purple-500 hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3
+                    className="group w-full max-w-[560px] min-h-[560px] border border-gray-800 rounded-xl overflow-hidden hover:bg-gradient-to-br from-[#2e1d55] to-[#1f1339] hover:border-purple-500 hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 hover:z-10
             "
                   >
                     <img

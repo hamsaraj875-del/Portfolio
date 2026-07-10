@@ -7,6 +7,8 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const multer = require("multer");
+const cloudinary = require("cloudinary");
 
 //internal modules
 
@@ -46,6 +48,20 @@ app.use(session({
 }));
 
 
+//file adder multer
+
+const fileFilter=(req,file,cb)=>{
+  if(['image/jpg','image/png'].includes(file.mimetype)){
+    cb(null,true);
+  }else{
+    cb(null,false);
+  }
+}
+
+const storage = multer.diskStorage({});
+
+
+
 //Admin Logged in Verification
 const loginVerify = (req, res, next) => {
   if (req.session.isLoggedIn) {
@@ -67,6 +83,7 @@ app.use(cors({
   origin:"http://localhost:5173",
   credentials:true
 }));
+app.use(multer({storage,fileFilter}).single("projectImg"));
 
 //Using Routers
 app.use("/github", githubRoot);
@@ -80,6 +97,7 @@ app.get("/project",controller.project);
 app.post("/verification",controller.verify);
 app.post("/adminVerify",loginVerify,controller.adminVerify);
 app.post("/data",loginVerify,controller.data);
+app.post("/notification",loginVerify,controller.notification);
 app.post("/logout",loginVerify,controller.logout);
 
 

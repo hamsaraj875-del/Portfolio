@@ -3,6 +3,7 @@
 const { check, validationResult } = require("express-validator");
 const sgMail = require("@sendgrid/mail");
 const dotenv = require("dotenv");
+const cloudinary = require("../utilities/cloudinary");
 
 //internal modules
 
@@ -267,14 +268,52 @@ exports.data =async(req,res,next)=>{
     })
   }
 }
+exports.add = async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({
+            success: false,
+            message: "No image received."
+        });
+      }
+
+      const projectImg = await cloudinary.uploader.upload(req.file.path);
+      const {projectName,projectDescription,projectLink,projectCode} = req.body;
+      const details = new projectDatabase({projectName, projectDescription, projectImg: projectImg.secure_url, projectLive: projectLink,projectCode });
+      await details.save();
+      return res.status(200).json({
+        success: true,
+        message: "Project uploaded successfully."
+      });
+
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({
+        success: false,
+        message: "Server error."
+      });
+    }
+};
 
 
 
-exports.add=(req,res,next)=>{
-  const data = req.body;
+//notification shower
+exports.notification=async(req,res,next)=>{
+  try{
+    const notification = await database.find();
+    return res.status(200).json({
+      success:true,
+      message:notification,
+    })
+  }
+  catch(err){
+    console.log(err);
+    return res.status(500).json({
+      success:false,
+      message:"server error try again"
+    })
+  }
 }
-
-
 
 
 //logout from the admin 

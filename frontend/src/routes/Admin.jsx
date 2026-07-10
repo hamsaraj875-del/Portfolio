@@ -4,6 +4,7 @@ import AdminNavbar from "../components/nonAccess/AdminNavbar";
 import AdminSidebar from "../components/nonAccess/AdminSidebar";
 import AdminDashBoard from "../components/nonAccess/AdminDashBoard";
 import AdminProject from "../components/nonAccess/AdminProject";
+import AdminNotification from "../components/nonAccess/AdminNotification";
 import Loader from "../components/access/Loader";
 import {useState,useEffect} from "react"
 
@@ -85,6 +86,7 @@ const Admin = ()=>{
         <AdminSidebar setTab={setTab} tab={tab} />
         {tab==="Dashboard" && <AdminDashBoard />}
         {tab==="Projects" && <AdminProject />}
+        {tab==="Notification" && <AdminNotification />}
       </div>
     </div>}
     </>
