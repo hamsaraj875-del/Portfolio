@@ -18,6 +18,9 @@ const githubRoot = require("./githubRoot");
 const leetcodeRoot = require("./leetcodeRoot");
 
 
+dotenv.config();
+
+
 //Creating rate limiter
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -35,17 +38,22 @@ const store = new MongoDBStore({
   collection:'session',
   expires:1000*60*60,
 });
+app.set("trust proxy", 1);
 
-app.use(session({
-  secret:process.env.SECRET_KEY,
-  saveUninitialized:false,
-  store:store,
-  resave:false,
-  cookie:{
-    httpOnly:true,
-    maxAge:1000*60*60
-  }
-}));
+app.use(
+  session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+    store,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+      secure: true,
+    },
+  })
+);
 
 
 //file adder multer
@@ -77,12 +85,27 @@ const loginVerify = (req, res, next) => {
  
 
 //Using Routes
-dotenv.config();
 app.use(express.json());
-app.use(cors({
-  origin:"https://portfolio-frontend-vjld.onrender.com3",
-  credentials:true
-}));
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://portfolio-frontend-vjld.onrender.com",
+];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
 app.use(multer({storage,fileFilter}).single("projectImg"));
 
 //Using Routers
@@ -111,7 +134,8 @@ app.post("/health",loginVerify,controller.health);
 mongoose.connect(process.env.DB).then(() => {
   console.log("database is connected successfully");
 
-  app.listen(3000, () => {
-    console.log(`Server is running http://localhost:${3000}`);
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
 });
