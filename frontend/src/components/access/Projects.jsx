@@ -14,12 +14,9 @@ const Projects = () => {
 
     const fetcher = async () => {
       try {
-        const response = await fetch(
-          "https://portfolio-server-57h1.onrender.com/project",
-          {
-            signal,
-          },
-        );
+        const response = await fetch(`${import.meta.env.VITE_LINK}/project`, {
+          signal,
+        });
         const data = await response.json();
         if (data.success) {
           setList(data.message);

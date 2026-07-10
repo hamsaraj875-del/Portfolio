@@ -15,15 +15,12 @@ const Navbar = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const data = { password, passkey };
-    const response = await fetch(
-      "https://portfolio-server-57h1.onrender.com/verification",
-      {
-        method: "POST",
-        credentials: "include",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      },
-    );
+    const response = await fetch(`${import.meta.env.VITE_LINK}/verification`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
     const result = await response.json();
     if (result.success) {
       setPassword("");

@@ -22,14 +22,11 @@ const Connect = () => {
 
     const data = { name, email, subject, description };
 
-    const response = await fetch(
-      "https://portfolio-server-57h1.onrender.com/connecter",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      },
-    );
+    const response = await fetch(`${import.meta.env.VITE_LINK}/connecter`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
     const status = await response.json();
     setLoader(false);
     if (status.serverError) {

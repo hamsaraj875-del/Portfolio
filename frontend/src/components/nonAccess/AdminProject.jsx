@@ -18,14 +18,11 @@ const AdminProject = () => {
     formData.append("projectCode", projectCode);
     formData.append("projectImg", projectImg);
 
-    const response = await fetch(
-      "https://portfolio-server-57h1.onrender.com/add",
-      {
-        method: "POST",
-        body: formData,
-        credentials: "include",
-      },
-    );
+    const response = await fetch(`${import.meta.env.VITE_LINK}/add`, {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    });
 
     const result = await response.json();
     console.log(result);

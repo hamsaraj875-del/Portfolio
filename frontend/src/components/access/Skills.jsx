@@ -34,10 +34,9 @@ const Skills = () => {
     const fetcher = async () => {
       try {
         await new Promise((res) => setTimeout(res, 1000));
-        const response = await fetch(
-          "https://portfolio-server-57h1.onrender.com/skills",
-          { signal },
-        );
+        const response = await fetch(`${import.meta.env.VITE_LINK}/skills`, {
+          signal,
+        });
         const data = await response.json();
         setResult(data.message);
       } catch (err) {

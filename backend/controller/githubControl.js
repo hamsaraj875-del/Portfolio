@@ -31,7 +31,9 @@ const github = async () => {
     const following = information.following;
 
     for (const rep of repositories) {
-      const language = await fetch(rep.languages_url);
+      const language = await fetch(rep.languages_url, {
+        headers: {Authorization: `Bearer ${process.env.GIT_API}`},
+      });
       const languageData = await language.json();
 
       for (const [language, byte] of Object.entries(languageData)) {
@@ -44,7 +46,7 @@ const github = async () => {
       }
     }
 
-    await githubDatabase.findOneAndUpdate(
+    const data = await githubDatabase.findOneAndUpdate(
       { cacheType: "github" },
       {
         cacheType: "github",
@@ -60,19 +62,10 @@ const github = async () => {
       },
       {
         upsert: true,
-        returnDocument: "after",
+        new:true,
       },
     );
-    return {
-      reposList:list,
-      language: languagePerc,
-      bio,
-      name,
-      userName,
-      repos,
-      followers,
-      following,
-    };
+    return data;
   } catch (err) {
     console.log(err);
     throw err;
@@ -88,27 +81,24 @@ exports.githubData = async (req, res, next) => {
 
     if (!data) {
       data = await github();
-    }
 
-    if (data.date.getTime() + day < Date.now()) {
-      try {
-        data = await github();
-        return res.status(200).json({
-          success: true,
-          message: data,
-        });
-      } catch (err) {
-        return res.status(200).json({
-          success: true,
-          message: data,
-        });
-      }
-    } else {
       return res.status(200).json({
         success: true,
         message: data,
       });
     }
+
+    if (data.date.getTime() + day < Date.now()) {
+      try {
+        data = await github();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    return res.status(200).json({
+      success: true,
+      message: data,
+    });
   } catch (err) {
     return res.status(500).json({
       sucess: false,

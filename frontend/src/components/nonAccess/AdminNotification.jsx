@@ -13,7 +13,7 @@ const AdminNotification = () => {
       try {
         setLoader(true);
         const response = await fetch(
-          "https://portfolio-server-57h1.onrender.com/notification",
+          `${import.meta.env.VITE_LINK}/notification`,
           {
             signal,
             method: "POST",

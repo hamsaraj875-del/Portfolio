@@ -11,13 +11,10 @@ const AdminNavbar = () => {
   const handleLogout = async () => {
     try {
       setLoader(true);
-      const response = await fetch(
-        "https://portfolio-server-57h1.onrender.com/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        },
-      );
+      const response = await fetch(`${import.meta.env.VITE_LINK}/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
 
       const data = await response.json();
 

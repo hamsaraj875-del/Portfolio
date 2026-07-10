@@ -60,8 +60,6 @@ const Intro = () => {
             </div>
           </div>
 
-          {/* Buttons */}
-
           <div className="flex flex-wrap gap-5">
             <a
               href="/Hamsaraj.pdf"
@@ -104,7 +102,6 @@ const Intro = () => {
           </div>
         </div>
 
-        {/* RIGHT */}
 
         <motion.div
           initial={{ opacity: 0, x: 40 }}

@@ -19,16 +19,16 @@ const Leetcode = () => {
     const fetchLeetcodeData = async () => {
       try {
         setLoader(true);
-        const res = await fetch(
-          "https://portfolio-server-57h1.onrender.com/leetcode",
-          { signal },
-        );
-        const res1 = await fetch(
-          "https://portfolio-server-57h1.onrender.com/github",
-          { signal },
-        );
+        console.log(import.meta.env.VITE_LINK);
+        const res = await fetch(`${import.meta.env.VITE_LINK}/leetcode`, {
+          signal,
+        });
+        const res1 = await fetch(`${import.meta.env.VITE_LINK}/github`, {
+          signal,
+        });
         const data = await res.json();
         const data1 = await res1.json();
+        console.log(data1);
         setGithubData(data1.message);
         setTotal(
           Object.values(data1.message.language).reduce((a, b) => a + b, 0),
