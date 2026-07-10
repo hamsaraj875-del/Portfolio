@@ -1,11 +1,11 @@
-import {useState} from "react";
+import { useState } from "react";
 
-const AdminProject=()=>{
-  const [projectName,setProjectName] = useState("");
-  const [projectDescription,setProjectDescription] = useState("");
-  const [projectLink,setProjectLink] = useState("");
-  const [projectCode,setProjectCode] = useState("");
-  const [projectImg,setProjectImg] = useState(null);
+const AdminProject = () => {
+  const [projectName, setProjectName] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+  const [projectLink, setProjectLink] = useState("");
+  const [projectCode, setProjectCode] = useState("");
+  const [projectImg, setProjectImg] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,37 +18,36 @@ const AdminProject=()=>{
     formData.append("projectCode", projectCode);
     formData.append("projectImg", projectImg);
 
-    const response = await fetch("http://localhost:3000/add", {
-      method: "POST",
-      body: formData,
-      credentials: "include",
-    });
+    const response = await fetch(
+      "https://portfolio-server-57h1.onrender.com/add",
+      {
+        method: "POST",
+        body: formData,
+        credentials: "include",
+      },
+    );
 
     const result = await response.json();
     console.log(result);
   };
-  
-  return(
+
+  return (
     <>
       <div className="min-h-screen bg-[#0f172a] p-8">
         <div className="mx-auto max-w-3xl rounded-2xl bg-[#111827] p-8 shadow-2xl border border-gray-700">
-
           <h1 className="mb-8 text-center text-3xl font-bold text-white">
             Add New Project
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-
             <div>
-              <label className="mb-2 block text-gray-300">
-                Project Name
-              </label>
+              <label className="mb-2 block text-gray-300">Project Name</label>
 
               <input
                 type="text"
                 name="name"
                 value={projectName}
-                onChange={(e)=>setProjectName(e.target.value)}
+                onChange={(e) => setProjectName(e.target.value)}
                 placeholder="Enter project name"
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500"
                 required
@@ -56,15 +55,13 @@ const AdminProject=()=>{
             </div>
 
             <div>
-              <label className="mb-2 block text-gray-300">
-                Description
-              </label>
+              <label className="mb-2 block text-gray-300">Description</label>
 
               <textarea
                 rows="5"
                 name="description"
                 value={projectDescription}
-                onChange={(e)=>setProjectDescription(e.target.value)}
+                onChange={(e) => setProjectDescription(e.target.value)}
                 placeholder="Write project description..."
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500 resize-none"
                 required
@@ -80,7 +77,7 @@ const AdminProject=()=>{
                 type="url"
                 name="liveLink"
                 value={projectLink}
-                onChange={(e)=>setProjectLink(e.target.value)}
+                onChange={(e) => setProjectLink(e.target.value)}
                 placeholder="https://..."
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500"
               />
@@ -95,7 +92,7 @@ const AdminProject=()=>{
                 type="url"
                 name="githubLink"
                 value={projectCode}
-                onChange={(e)=>setProjectCode(e.target.value)}
+                onChange={(e) => setProjectCode(e.target.value)}
                 placeholder="https://github.com/..."
                 className="w-full rounded-lg border border-gray-700 bg-[#1f2937] p-3 text-white outline-none focus:border-purple-500"
                 required
@@ -103,14 +100,12 @@ const AdminProject=()=>{
             </div>
 
             <div>
-              <label className="mb-2 block text-gray-300">
-                Project Image
-              </label>
+              <label className="mb-2 block text-gray-300">Project Image</label>
 
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e)=>setProjectImg(e.target.files[0])}
+                onChange={(e) => setProjectImg(e.target.files[0])}
                 className="w-full rounded-lg border border-dashed border-gray-600 bg-[#1f2937] p-3 text-gray-300 file:mr-4 file:rounded-md file:border-0 file:bg-purple-600 file:px-4 file:py-2 file:text-white hover:file:bg-purple-700"
                 required
               />
@@ -122,12 +117,11 @@ const AdminProject=()=>{
             >
               Add Project
             </button>
-
           </form>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default AdminProject;

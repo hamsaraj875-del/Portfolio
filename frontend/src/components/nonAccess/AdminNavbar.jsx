@@ -1,34 +1,35 @@
 import { useState, useEffect } from "react";
-import {FaBars,FaSignOutAlt,} from "react-icons/fa";
+import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import Loader from "../access/Loader";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [loader,setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout=async()=>{
-    try{
+  const handleLogout = async () => {
+    try {
       setLoader(true);
-      const response = await fetch("http://localhost:3000/logout",{
-        method:"POST",
-        credentials:"include",
-      });
+      const response = await fetch(
+        "https://portfolio-server-57h1.onrender.com/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        },
+      );
 
       const data = await response.json();
 
-      if(data.success){
+      if (data.success) {
         navigate("/");
       }
-    }catch(err){
+    } catch (err) {
       console.log(err);
-    }
-    finally{
+    } finally {
       setLoader(false);
     }
-
-  }
+  };
 
   return (
     <>
@@ -48,7 +49,10 @@ const AdminNavbar = () => {
           </div>
 
           <div className="hidden items-center gap-6 md:flex">
-            <button onClick={handleLogout} className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600">
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+            >
               {loader && <Loader />}
               <FaSignOutAlt />
               Logout
@@ -66,7 +70,10 @@ const AdminNavbar = () => {
         {menuOpen && (
           <div className="border-t border-gray-700 bg-[#111827] md:hidden">
             <div className="flex flex-col gap-4 p-5">
-              <button onClick={handleLogout} className="flex items-center gap-3 text-red-400 hover:text-red-500">
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 text-red-400 hover:text-red-500"
+              >
                 {loader && <Loader />}
                 <FaSignOutAlt />
                 Logout
