@@ -32,10 +32,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed z-200 mb-24 top-5 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center font-['Poppins']">
+    <nav className="fixed z-200 top-5 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center h-fit font-['Poppins']">
       <div
         className="
-        mb-24
           w-[95%] max-w-6xl
           flex items-center justify-between
           px-5 py-3
