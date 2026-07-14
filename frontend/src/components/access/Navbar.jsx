@@ -163,6 +163,12 @@ const Navbar = () => {
           >
             Contact
           </a>
+          <a
+            className="border border-gray-700 px-4 py-1 rounded-2xl hover:bg-gray-700"
+            onClick={() => {setIsOpen(false),setAdmin(true)}}
+          >
+            Admin
+          </a>
         </div>
       )}
       {admin && (
