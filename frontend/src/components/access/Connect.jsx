@@ -175,7 +175,7 @@ const Connect = () => {
                   <p className="text-red-500">{backendError.description}</p>
                 )}
               </div>
-              <button className="w-full h-fit py-2 px-4 bg-gradient-to-r from-pink-400 to-purple-400  rounded-2xl font-mono text-3xl text-bold flex justify-center items-center transition-all duration-500 hover:scale-110">
+              <button className={`w-full h-fit py-2 px-4 bg-gradient-to-r from-pink-400 to-purple-400  rounded-2xl font-mono text-3xl text-bold flex justify-center items-center transition-all duration-500 ${!loader?'hover:scale-105':''} ${loader?'cursor-not-allowed disabled:opacity-50':''}`}>
                 {loader && <Loader className="mr-20" />}
                 <FcInvite className="text-blue-500 mr-4" size={30} />
                 Invite

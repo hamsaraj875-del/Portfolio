@@ -152,33 +152,27 @@ const generateEmail = async (email) => {
   }
 };
 
+//Display skills
 
-
-
-//Display skills 
-
-exports.skills = async(req,res,next)=>{
-  try{
-    const language = await skillDatabase.find({category:"language"});
-    const technology = await skillDatabase.find({category:"technology"});
-    const tool = await skillDatabase.find({category:"tool"});
-    const data = {language,technology,tool};
+exports.skills = async (req, res, next) => {
+  try {
+    const language = await skillDatabase.find({ category: "language" });
+    const technology = await skillDatabase.find({ category: "technology" });
+    const tool = await skillDatabase.find({ category: "tool" });
+    const data = { language, technology, tool };
 
     return res.status(200).json({
-      success:true,
-      message:data,
-    })
-  }catch(err){
+      success: true,
+      message: data,
+    });
+  } catch (err) {
     console.log(err);
     return res.status(500).json({
-      success:false,
-      message:"Server error please try again later"
-    })
+      success: false,
+      message: "Server error please try again later",
+    });
   }
-}
-
-
-
+};
 
 //handling project roots
 
@@ -196,9 +190,6 @@ exports.project = async (req, res, next) => {
     });
   }
 };
-
-
-
 
 //password verification
 exports.verify = async (req, res, next) => {
@@ -221,8 +212,6 @@ exports.verify = async (req, res, next) => {
   }
 };
 
-
-
 //admin verification
 
 exports.adminVerify = (req, res, next) => {
@@ -239,86 +228,120 @@ exports.adminVerify = (req, res, next) => {
   }
 };
 
-
 //sharing data for the dashboard
 
-exports.data =async(req,res,next)=>{
-  try{
+exports.data = async (req, res, next) => {
+  try {
     const project = await projectDatabase.countDocuments();
-    const languages = await skillDatabase.countDocuments({category:"language"});
-    const technologies = await skillDatabase.countDocuments({category:"technology"});
-    const tools = await skillDatabase.countDocuments({category:"tool"});
-    const leetcode = await leetcodeDatabase.findOne({cacheType:"leetcode"});
+    const languages = await skillDatabase.countDocuments({
+      category: "language",
+    });
+    const technologies = await skillDatabase.countDocuments({
+      category: "technology",
+    });
+    const tools = await skillDatabase.countDocuments({ category: "tool" });
+    const leetcode = await leetcodeDatabase.findOne({ cacheType: "leetcode" });
     const solved = leetcode.solved;
-    const github = await githubDatabase.findOne({cacheType:"github"});
+    const github = await githubDatabase.findOne({ cacheType: "github" });
     const repositories = github.repos;
-    
-    data = {project,languages,technologies,tools,leetcode,solved,github,repositories}
+
+    data = {
+      project,
+      languages,
+      technologies,
+      tools,
+      leetcode,
+      solved,
+      github,
+      repositories,
+    };
 
     return res.status(200).json({
-      success:true,
-      message:data
-    })
-
-  }catch(err){
+      success: true,
+      message: data,
+    });
+  } catch (err) {
     console.log(err);
     return res.status(500).json({
-      success:false,
-      message:"Server is not responding Please try again later"
-    })
+      success: false,
+      message: "Server is not responding Please try again later",
+    });
   }
-}
+};
 exports.add = async (req, res) => {
-    try {
-      if (!req.file) {
-        return res.status(400).json({
-            success: false,
-            message: "No image received."
-        });
-      }
-
-      const projectImg = await cloudinary.uploader.upload(req.file.path);
-      const {projectName,projectDescription,projectLink,projectCode} = req.body;
-      const details = new projectDatabase({projectName, projectDescription, projectImg: projectImg.secure_url, projectLive: projectLink,projectCode });
-      await details.save();
-      return res.status(200).json({
-        success: true,
-        message: "Project uploaded successfully."
-      });
-
-    } catch (err) {
-      console.log(err);
-      return res.status(500).json({
+  try {
+    if (!req.file) {
+      return res.status(400).json({
         success: false,
-        message: "Server error."
+        message: "No image received.",
       });
     }
+
+    const projectImg = await cloudinary.uploader.upload(req.file.path);
+    const { projectName, projectDescription, projectLink, projectCode } =
+      req.body;
+    const details = new projectDatabase({
+      projectName,
+      projectDescription,
+      projectImg: projectImg.secure_url,
+      projectLive: projectLink,
+      projectCode,
+    });
+    await details.save();
+    return res.status(200).json({
+      success: true,
+      message: "Project uploaded successfully.",
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Server error.",
+    });
+  }
 };
 
-
-
 //notification shower
-exports.notification=async(req,res,next)=>{
-  try{
+exports.notification = async (req, res, next) => {
+  try {
     const notification = await database.find();
     return res.status(200).json({
-      success:true,
-      message:notification,
-    })
+      success: true,
+      message: notification,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "server error try again",
+    });
   }
+};
+
+//deleting notification
+
+exports.deleteNotification = async(req, res, next) => {
+ const {id} = req.body;
+  try{
+    await database.findByIdAndDelete(id);
+    console.log("deleted");
+    return res.status(200).json({
+      success:true,
+      message:"Deleted successfully"
+    })
+}
   catch(err){
     console.log(err);
     return res.status(500).json({
       success:false,
-      message:"server error try again"
+      message:"Server error "
     })
   }
-}
+};
 
+//logout from the admin
 
-//logout from the admin 
-
-exports.logout=(req,res,next)=>{
+exports.logout = (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       return res.status(500).json({
@@ -334,14 +357,12 @@ exports.logout=(req,res,next)=>{
       message: "Logged out successfully",
     });
   });
-}
-
-
+};
 
 //web health detector
 
-exports.health=(req,res,next)=>{
+exports.health = (req, res, next) => {
   return res.status(200).json({
-    status:ok,
-  })
-}
+    status: ok,
+  });
+};

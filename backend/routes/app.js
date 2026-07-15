@@ -23,7 +23,7 @@ dotenv.config();
 
 //Creating rate limiter
 const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
+  windowMs: 1 * 60 * 1000,
   max: 10,    
   message: {
     error: "Too many requests, please try again later."
@@ -75,6 +75,7 @@ const loginVerify = (req, res, next) => {
   if (req.session.isLoggedIn) {
     next();
   } else {
+    console.log("unauthorized !")
     return res.status(401).json({
       success: false,
       message: "Unauthorized. Please login first.",
@@ -121,6 +122,7 @@ app.post("/verification",limiter,controller.verify);
 app.post("/adminVerify",limiter,loginVerify,controller.adminVerify);
 app.post("/data",limiter,loginVerify,controller.data);
 app.post("/notification",limiter,loginVerify,controller.notification);
+app.post("/delete",limiter,loginVerify,controller.deleteNotification);
 app.post("/logout",limiter,loginVerify,controller.logout);
 
 

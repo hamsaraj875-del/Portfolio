@@ -22,8 +22,7 @@ const Admin = () => {
       setLoader(true);
 
       try {
-        const response = await fetch(
-          "https://portfolio-server-57h1.onrender.com/adminVerify",
+        const response = await fetch(`${import.meta.env.VITE_LINK}/adminVerify`,
           {
             method: "POST",
             credentials: "include",
