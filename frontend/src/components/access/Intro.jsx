@@ -19,7 +19,7 @@ const Intro = () => {
             BACKEND • FULL STACK • JAVA
           </p>
 
-          <h1 className="text-6xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-6xl lg:text-8xl ffont-['Outfit'] font-bold  leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             HAMSARAJ V.C
           </h1>
 
@@ -114,7 +114,7 @@ const Intro = () => {
           <img
             src="/img.png"
             alt="Hamsaraj"
-            className="relative w-[380px] lg:w-[430px] h-[380px] lg:h-[430px] object-cover rounded-full border border-blue-500/30 shadow-2xl"
+            className="relative w-[380px] lg:w-[430px] h-[380px] lg:h-[430px] object-cover rounded-full border border-blue-500  shadow-2xl shadow-blue-900"
           />
         </motion.div>
       </div>
