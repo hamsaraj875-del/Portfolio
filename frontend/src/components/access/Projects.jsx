@@ -1,3 +1,5 @@
+import Loader from "./Loader";
+
 import { FaCalculator, FaCode } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { FcDocument } from "react-icons/fc";
@@ -39,6 +41,7 @@ const Projects = () => {
 
   return (
     <>
+      {list.length == 0 && <Loader />}
       {list.length != 0 && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
