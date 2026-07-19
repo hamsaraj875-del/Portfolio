@@ -68,7 +68,7 @@ const Hobbies = () => {
                 size={50}
               />
               <div className="text-xl h-[15%] text-center transition-transform duration-200 ease-in group-hover:scale-110 font-bold group-hover:text-orange-500">
-                Sports
+                Cricket
               </div>
               <div className="text-gray-400 text-center font-serif">
                 Sports have taught me discipline, consistency, teamwork, and the ability to perform under pressure. Playing cricket helps me stay focused, competitive, and mentally sharp.
