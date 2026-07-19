@@ -7,10 +7,12 @@ import Footer from "../components/access/Footer";
 import Projects from "../components/access/Projects";
 import Connect from "../components/access/Connect";
 import Leetcode from "../components/access/Leetcode";
+import ProgressBar from "../components/access/progressBar";
 import "../App.css";
 const App = () => {
   return (
     <div className="text-white">
+      <ProgressBar />
       <section id="Navbar">
         <Navbar id="Navbar" />
       </section>

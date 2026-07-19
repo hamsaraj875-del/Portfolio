@@ -5,6 +5,7 @@ body,
   scroll-behavior: smooth;
   background-color: #b0bac7;
   min-height: 100%;
+  scrollbar-width:none;
 }
 .loadHolder {
   display: flex;
