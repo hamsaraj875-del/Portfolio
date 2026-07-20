@@ -42,7 +42,6 @@ const Projects = () => {
   return (
     <>
       {list.length == 0 && <Loader />}
-      {list.length != 0 && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,6 +55,8 @@ const Projects = () => {
                 Projects
               </p>
             </div>
+            
+          {list.length != 0 && (
 
             <div className="flex flex-wrap justify-center gap-8 px-4">
               {list.map((item, index) => (
@@ -114,9 +115,9 @@ const Projects = () => {
                 </motion.div>
               ))}
             </div>
+          )}
           </div>
         </motion.div>
-      )}
     </>
   );
 };
