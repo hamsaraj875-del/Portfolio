@@ -41,23 +41,23 @@ const Projects = () => {
 
   return (
     <>
-      {list.length == 0 && <Loader />}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false }}
-        >
-          <div className="w-full mt-20">
-            <div className="w-full flex justify-center items-center h-20 mb-12">
-              <p className="flex items-center font-mono text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-                <FcDocument className="mr-4 text-3xl sm:text-4xl" />
-                Projects
-              </p>
-            </div>
-            
-          {list.length != 0 && (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: false }}
+      >
+        <div className="w-full mt-20">
+          <div className="w-full flex justify-center items-center h-20 mb-12">
+            <p className="flex items-center font-mono text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+              <FcDocument className="mr-4 text-3xl sm:text-4xl" />
+              Projects
+            </p>
+          </div>
 
+          {list.length == 0 && <Loader />}
+
+          {list.length != 0 && (
             <div className="flex flex-wrap justify-center gap-8 px-4">
               {list.map((item, index) => (
                 <motion.div
@@ -116,8 +116,8 @@ const Projects = () => {
               ))}
             </div>
           )}
-          </div>
-        </motion.div>
+        </div>
+      </motion.div>
     </>
   );
 };
