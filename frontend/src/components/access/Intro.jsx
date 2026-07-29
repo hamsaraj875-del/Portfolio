@@ -112,7 +112,7 @@ const Intro = () => {
           <div className="absolute inset-0 bg-blue-500/20 blur-[120px] rounded-full"></div>
 
           <img
-            src="/img.png"
+            src="https://res.cloudinary.com/dbaqcimmp/image/upload/v1785322326/img_lwrlto.png"
             alt="Hamsaraj"
             className="relative w-[380px] lg:w-[430px] h-[380px] lg:h-[430px] object-cover rounded-full border border-blue-500  shadow-2xl shadow-blue-900"
           />
