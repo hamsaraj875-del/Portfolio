@@ -68,8 +68,14 @@ const Projects = () => {
                   viewport={{ once: false }}
                 >
                   <div
-                    className="group w-full max-w-[560px] min-h-[560px] border border-gray-800 rounded-xl overflow-hidden hover:bg-gradient-to-br from-[#2e1d55] to-[#1f1339] hover:border-purple-500 hover:scale-105 transition-all duration-500 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)] hover:shadow-[0_20px_60px_rgba(168,85,247,0.5)] hover:-translate-y-3 hover:z-10
-            "
+                    className="group w-full max-w-[560px] min-h-[560px]
+border border-gray-800 rounded-xl overflow-hidden
+hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#1e1b4b] hover:to-[#0c1b3f]
+hover:border-blue-500 hover:scale-105
+transition-all duration-500
+hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)]
+hover:shadow-[0_20px_60px_rgba(59,130,246,0.35)]
+hover:-translate-y-3 hover:z-10 group"
                   >
                     <img
                       src={item.projectImg}
@@ -77,16 +83,16 @@ const Projects = () => {
                       className="w-full h-56 sm:h-80 object-cover"
                     />
 
-                    <p className="text-lg sm:text-xl text-center font-mono mt-4 group-hover:text-purple-500 transition-transform group-hover:scale-110">
+                    <p className="text-lg sm:text-xl text-center font-mono mt-4 font-bold group-hover:text-purple-600 transition-color duration-400 group-hover:scale-110">
                       {item.projectName}
                     </p>
 
-                    <p className="px-3 sm:px-5 mt-4 text-center text-gray-400">
+                    <p className="px-3 sm:px-5 mt-4 text-center text-gray-400 group-hover:text-white">
                       {item.projectDescription}
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 py-6">
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-purple-500">
+                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500">
                         <GoDotFill
                           className="text-green-700 mr-2 animate-ping"
                           size={15}
@@ -100,7 +106,7 @@ const Projects = () => {
                         </a>
                       </div>
 
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-purple-500">
+                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500">
                         <FaCode className="text-green-400 mr-2" size={20} />
                         <a
                           href={item.projectCode}
