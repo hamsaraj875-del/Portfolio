@@ -68,14 +68,18 @@ const Projects = () => {
                   viewport={{ once: false }}
                 >
                   <div
-                    className="group w-full max-w-[560px] min-h-[560px]
+                    className="group relative w-full max-w-[560px] min-h-[560px]
 border border-gray-800 rounded-xl overflow-hidden
 hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#1e1b4b] hover:to-[#0c1b3f]
 hover:border-blue-500 hover:scale-105
 transition-all duration-500
 hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)]
 hover:shadow-[0_20px_60px_rgba(59,130,246,0.35)]
-hover:-translate-y-3 hover:z-10 group"
+hover:-translate-y-3 hover:z-10
+after:content-[''] after:absolute after:inset-0 after:z-20 after:opacity-0
+after:[background:radial-gradient(circle_at_top_left,rgba(59,130,246,0.25),transparent_60%)]
+after:transition-opacity after:duration-300
+hover:after:opacity-100"
                   >
                     <img
                       src={item.projectImg}
