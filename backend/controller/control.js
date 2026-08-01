@@ -16,7 +16,6 @@ const githubDatabase = require("../models/github");
 //setting some functions
 
 dotenv.config();
-sgMail.setApiKey(process.env.EMAIL_API);
 
 //user input validation
 
