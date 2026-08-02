@@ -31,6 +31,7 @@ const Admin = () => {
         );
 
         const data = await response.json();
+        console.log(data);
         setLogin(data.success);
       } catch (err) {
         if (err.name !== "AbortError") {

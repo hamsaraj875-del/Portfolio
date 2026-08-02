@@ -49,8 +49,8 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60,
-      sameSite: "none",
-      secure: true,
+      sameSite: "lax",
+      secure: false,
     },
   })
 );
@@ -110,8 +110,8 @@ app.use(
 app.use(multer({storage,fileFilter}).single("projectImg"));
 
 //Using Routers
-app.use("/github", githubRoot);
-app.use("/leetcode", leetcodeRoot);
+app.use("/github",limiter, githubRoot);
+app.use("/leetcode",limiter, leetcodeRoot);
 
 //routers handling
 //Ouput values

@@ -19,7 +19,6 @@ const Leetcode = () => {
     const fetchLeetcodeData = async () => {
       try {
         setLoader(true);
-        console.log(import.meta.env.VITE_LINK);
         const res = await fetch(`${import.meta.env.VITE_LINK}/leetcode`, {
           signal,
         });
@@ -28,7 +27,6 @@ const Leetcode = () => {
         });
         const data = await res.json();
         const data1 = await res1.json();
-        console.log(data1);
         setGithubData(data1.message);
         setTotal(
           Object.values(data1.message.language).reduce((a, b) => a + b, 0),

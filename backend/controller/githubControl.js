@@ -29,7 +29,6 @@ const github = async () => {
     const repos = information.public_repos;
     const followers = information.followers;
     const following = information.following;
-    console.log(repositories);
 
     for (const rep of repositories) {
       const language = await fetch(rep.languages_url, {

@@ -75,14 +75,14 @@ exports.userInput = [
           return res.status(200).json({
             success: true,
             message:
-              "Your message has been received by Hamsaraj and he will contact you soon. Please check your email for confirmation, and if you don’t see it, kindly look in your Spam or Junk folder as well. Thanks for connecting!",
+              "💜 Thanks for connecting! Your message has been delivered. 📧 A confirmation email is on its way—don't forget to check your Spam/Junk folder too."
           });
         } catch (err) {
           console.log(err);
           return res.status(200).json({
             success: true,
             message:
-              "Your message has been sent to Hamsaraj. He will contact you soon. Thanks for connecting!",
+              "✅ Your message has been sent to Hamsaraj. 💜 He'll get back to you soon. Thanks for connecting!"
           });
         }
       } catch (err) {
@@ -113,7 +113,7 @@ const transporter = nodemailer.createTransport({
 
 const generateEmail = async (email) => {
   try {
-    await transporter.sendMail({
+    const response = await transporter.sendMail({
       from: `"Hamsaraj Portfolio" <${process.env.EMAIL}>`,
       to: email,
       subject: "🎉 Message Received Successfully",
@@ -228,6 +228,7 @@ const generateEmail = async (email) => {
       </html>
       `,
     });
+    return response;
 
     console.log("Confirmation email sent.");
   } catch (err) {
@@ -235,6 +236,7 @@ const generateEmail = async (email) => {
     throw err;
   }
 };
+
 
 //Display skills
 
