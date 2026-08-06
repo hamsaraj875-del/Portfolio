@@ -121,7 +121,7 @@ const Connect = () => {
                   type="text"
                   id="name"
                   placeholder="eg:Ram"
-                  className="border-2 border-gray-700 px-4 py-2 rounded-xl"
+                  className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
                 {backendError.name && (
                   <p className="text-red-500">{backendError.name}</p>
@@ -137,7 +137,7 @@ const Connect = () => {
                   type="email"
                   id="email"
                   placeholder="eg:ram123@gmail.com"
-                  className="border-2 border-gray-700 px-4 py-2 rounded-xl"
+                  className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
                 {backendError.email && (
                   <p className="text-red-500">{backendError.email}</p>
@@ -153,7 +153,7 @@ const Connect = () => {
                   type="text"
                   id="subject"
                   placeholder="eg:Collaboration Opportunity"
-                  className="border-2 border-gray-700 px-4 py-2 rounded-xl"
+                  className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
                 {backendError.subject && (
                   <p className="text-red-500">{backendError.subject}</p>
@@ -169,7 +169,7 @@ const Connect = () => {
                   type="text"
                   id="description"
                   placeholder="eg: Discussion "
-                  className="border-2 border-gray-700 px-4 py-2 rounded-xl max-h-30 min-h-20"
+                  className="border-2 border-gray-700 px-4 py-2 rounded-xl max-h-30 min-h-20 placeholder-gray-700"
                 ></textarea>
                 {backendError.description && (
                   <p className="text-red-500">{backendError.description}</p>
