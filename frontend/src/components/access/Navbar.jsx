@@ -39,7 +39,7 @@ const Navbar = () => {
           flex items-center justify-between
           px-5 py-3
           rounded-full
-          bg-[#111827]/80
+          bg-[#111827]/50
           backdrop-blur-xl
           border border-slate-700/50
           shadow-[0_8px_32px_rgba(0,0,0,0.5)]

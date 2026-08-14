@@ -19,7 +19,7 @@ const Intro = () => {
             BACKEND • FULL STACK • JAVA
           </p>
 
-          <h1 className="text-6xl lg:text-8xl font-['Outfit'] font-extrabold  leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-6xl lg:text-8xl font-['Outfit'] font-extrabold   leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             HAMSARAJ V.C
           </h1>
 

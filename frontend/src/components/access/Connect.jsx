@@ -21,25 +21,30 @@ const Connect = () => {
     setLoader(true);
 
     const data = { name, email, subject, description };
-
-    const response = await fetch(`${import.meta.env.VITE_LINK}/connecter`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    const status = await response.json();
-    setLoader(false);
-    if (status.serverError) {
-      setRes(status.message);
-    } else if (response.ok && status.success) {
-      setName("");
-      setEmail("");
-      setSubject("");
-      setDescription("");
-      setBackendError("");
-      setRes(status.message);
-    } else {
-      setBackendError(status.message);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_LINK}/connecter`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const status = await response.json();
+      setLoader(false);
+      if (status.serverError) {
+        setRes(status.message);
+      } else if (response.ok && status.success) {
+        setName("");
+        setEmail("");
+        setSubject("");
+        setDescription("");
+        setBackendError("");
+        setRes(status.message);
+      } else {
+        setBackendError(status.message);
+      }
+    } catch (err) {
+      console.log(err);
+      setLoader(false);
+      setRes("Server error occured please try again!");
     }
   };
 
@@ -175,7 +180,9 @@ const Connect = () => {
                   <p className="text-red-500">{backendError.description}</p>
                 )}
               </div>
-              <button className={`w-full h-fit py-2 px-4 bg-gradient-to-r from-pink-400 to-purple-400  rounded-2xl font-mono text-3xl text-bold flex justify-center items-center transition-all duration-500 ${!loader?'hover:scale-105':''} ${loader?'cursor-not-allowed disabled:opacity-50':''}`}>
+              <button
+                className={`w-full h-fit py-2 px-4 bg-gradient-to-r from-pink-400 to-purple-400  rounded-2xl font-mono text-3xl text-bold flex justify-center items-center transition-all duration-500 ${!loader ? "hover:scale-105" : ""} ${loader ? "cursor-not-allowed disabled:opacity-50" : ""}`}
+              >
                 {loader && <Loader className="mr-20" />}
                 <FcInvite className="text-blue-500 mr-4" size={30} />
                 Invite
