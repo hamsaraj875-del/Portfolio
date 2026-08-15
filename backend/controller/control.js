@@ -1,7 +1,7 @@
 //external modules
 
 const { check, validationResult } = require("express-validator");
-const nodemailer = require("nodemailer");
+const sgMail = require("@sendgrid/mail");
 const dotenv = require("dotenv");
 const cloudinary = require("../utilities/cloudinary");
 
@@ -14,7 +14,7 @@ const leetcodeDatabase = require("../models/leetcode");
 const githubDatabase = require("../models/github");
 
 //setting some functions
-
+sgMail.setApiKey(process.env.EMAIL_API);
 dotenv.config();
 
 //user input validation
@@ -42,9 +42,7 @@ exports.userInput = [
 
   check("description")
     .notEmpty()
-    .withMessage("description cannot be empty")
-    .matches(/^[a-zA-Z\s]+$/)
-    .withMessage("descirption cannot have the special character or numbers"),
+    .withMessage("description cannot be empty"),
 
   async (req, res, next) => {
     const { name, email, subject, description } = req.body;
@@ -98,145 +96,61 @@ exports.userInput = [
   },
 ];
 
-//nodemailer initiater
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_API ,
-  },
-});
-
 
 //email generator
 
 const generateEmail = async (email) => {
   try {
-    const response = await transporter.sendMail({
-      from: `"Hamsaraj Portfolio" <${process.env.EMAIL}>`,
+    const msg = {
       to: email,
+      from: process.env.EMAIL, // must be a verified sender in SendGrid
       subject: "🎉 Message Received Successfully",
       html: `
       <!DOCTYPE html>
       <html>
-      <head>
-        <meta charset="UTF-8">
-      </head>
-
+      <head><meta charset="UTF-8"></head>
       <body style="margin:0;padding:0;background:#eef2ff;font-family:Arial,Helvetica,sans-serif;">
-
         <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
           <tr>
             <td align="center">
-
               <table width="600" cellpadding="0" cellspacing="0"
                 style="background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.12);">
-
-                <!-- Header -->
                 <tr>
-                  <td
-                    style="background:linear-gradient(135deg,#4f46e5,#7c3aed);padding:35px;text-align:center;color:white;">
-
-                    <h1 style="margin:0;font-size:32px;">
-                      🚀 Hamsaraj Portfolio
-                    </h1>
-
-                    <p style="margin-top:12px;font-size:16px;opacity:.9;">
-                      Your message has been received successfully
-                    </p>
-
+                  <td style="background:linear-gradient(135deg,#4f46e5,#7c3aed);padding:35px;text-align:center;color:white;">
+                    <h1 style="margin:0;font-size:32px;">🚀 Hamsaraj Portfolio</h1>
+                    <p style="margin-top:12px;font-size:16px;opacity:.9;">Your message has been received successfully</p>
                   </td>
                 </tr>
-
-                <!-- Body -->
                 <tr>
                   <td style="padding:40px;">
-
-                    <h2 style="margin-top:0;color:#1f2937;">
-                      Hello 👋
-                    </h2>
-
-                    <p style="font-size:16px;color:#4b5563;line-height:1.8;">
-                      Thank you for contacting me through my portfolio website.
-                    </p>
-
-                    <p style="font-size:16px;color:#4b5563;line-height:1.8;">
-                      I have successfully received your message and I'll review it as
-                      soon as possible.
-                    </p>
-
-                    <div
-                      style="margin:35px 0;padding:25px;background:#eef2ff;border-left:5px solid #6366f1;border-radius:10px;">
-
-                      <h3 style="margin:0;color:#4338ca;">
-                        ✔ What happens next?
-                      </h3>
-
-                      <ul style="margin-top:15px;color:#374151;font-size:15px;line-height:1.8;">
-                        <li>Your message has been securely delivered.</li>
-                        <li>I will review it carefully.</li>
-                        <li>You can expect a reply as soon as possible.</li>
-                      </ul>
-
-                    </div>
-
-                    <div style="text-align:center;margin:35px 0;">
-
-                      <a href="https://your-portfolio-link.com"
-                        style="background:#4f46e5;color:white;padding:14px 34px;
-                        text-decoration:none;border-radius:8px;font-size:16px;
-                        font-weight:bold;display:inline-block;">
-
-                        Visit Portfolio
-
-                      </a>
-
-                    </div>
-
-                    <p style="font-size:15px;color:#6b7280;line-height:1.8;">
-                      If you didn't submit this message, you can safely ignore this
-                      email.
-                    </p>
-
+                    <h2 style="margin-top:0;color:#1f2937;">Hello 👋</h2>
+                    <p style="font-size:16px;color:#4b5563;line-height:1.8;">Thank you for contacting me through my portfolio website.</p>
+                    <p style="font-size:16px;color:#4b5563;line-height:1.8;">I have successfully received your message and I'll review it as soon as possible.</p>
                   </td>
                 </tr>
-
-                <!-- Footer -->
                 <tr>
-                  <td
-                    style="background:#111827;color:#d1d5db;padding:25px;text-align:center;">
-
-                    <p style="margin:0;font-size:15px;">
-                      Thank you for visiting my portfolio ❤️
-                    </p>
-
-                    <p style="margin-top:8px;font-size:13px;color:#9ca3af;">
-                      © ${new Date().getFullYear()} Hamsaraj Portfolio • All Rights Reserved
-                    </p>
-
+                  <td style="background:#111827;color:#d1d5db;padding:25px;text-align:center;">
+                    <p style="margin:0;font-size:15px;">Thank you for visiting my portfolio ❤️</p>
+                    <p style="margin-top:8px;font-size:13px;color:#9ca3af;">© ${new Date().getFullYear()} Hamsaraj Portfolio</p>
                   </td>
                 </tr>
-
               </table>
-
             </td>
           </tr>
         </table>
-
       </body>
       </html>
       `,
-    });
-    return response;
+    };
 
+    const response = await sgMail.send(msg);
     console.log("Confirmation email sent.");
+    return response;
   } catch (err) {
-    console.error(err);
+    console.error(err.response ? err.response.body : err);
     throw err;
   }
 };
-
 
 //Display skills
 
