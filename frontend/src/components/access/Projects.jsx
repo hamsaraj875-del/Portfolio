@@ -96,7 +96,7 @@ hover:after:opacity-100"
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 py-6">
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500">
+                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
                         <GoDotFill
                           className="text-green-700 mr-2 animate-ping"
                           size={15}
@@ -110,7 +110,7 @@ hover:after:opacity-100"
                         </a>
                       </div>
 
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500">
+                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
                         <FaCode className="text-green-400 mr-2" size={20} />
                         <a
                           href={item.projectCode}

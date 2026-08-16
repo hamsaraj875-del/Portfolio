@@ -33,7 +33,6 @@ const Skills = () => {
     setLoader(true);
     const fetcher = async () => {
       try {
-        await new Promise((res) => setTimeout(res, 1000));
         const response = await fetch(`${import.meta.env.VITE_LINK}/skills`, {
           signal,
         });
