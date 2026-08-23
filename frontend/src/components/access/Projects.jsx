@@ -1,3 +1,4 @@
+//internal modules
 import Loader from "./Loader";
 
 import { FaCalculator, FaCode } from "react-icons/fa";
@@ -5,6 +6,7 @@ import { GoDotFill } from "react-icons/go";
 import { FcDocument } from "react-icons/fc";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
 
 const Projects = () => {
   const [list, setList] = useState([]);
@@ -55,7 +57,6 @@ const Projects = () => {
             </p>
           </div>
 
-          {list.length == 0 && <Loader />}
 
           {list.length != 0 && (
             <div className="flex flex-wrap justify-center gap-8 px-4">

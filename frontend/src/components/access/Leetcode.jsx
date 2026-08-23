@@ -79,7 +79,6 @@ const Leetcode = () => {
                 Github
               </button>
             </div>
-            {loader && <Loader className="mt-8" />}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -198,21 +197,32 @@ const Leetcode = () => {
                     Bio : {githubData.bio}
                   </div>
                   <div className="flex flex-col lg:flex-row justify-evenly gap-10">
-                    <div className="w-full lg:w-[50%] text-gray-400 px-4 md:px-16 lg:px-30 h-fit flex-col gap-4 items-center rounded-xl flex">
+                    <div className="w-full lg:w-1/2 px-4 sm:px-8 lg:px-12 flex flex-col gap-4">
                       {Object.entries(githubData.language).map(
-                        ([language, byte]) => (
-                          <div
-                            key={language}
-                            className="w-full h-4 gap-4 flex justify-start items-center"
-                          >
-                            <p className="w-20">{language} :</p>
+                        ([language, byte]) => {
+                          const percentage = (byte / total) * 100;
+
+                          return (
                             <div
-                              className="h-4 bg-gradient-to-r from-blue-600 to-purple-600 border border-gray-700 rounded-xl"
-                              style={{ width: `${(byte / total) * 100}%` }}
-                            ></div>
-                            <p>{((byte / total) * 100).toFixed(2)} %</p>
-                          </div>
-                        ),
+                              key={language}
+                              className="w-full grid grid-cols-[70px_1fr_auto] sm:grid-cols-[100px_1fr_auto] items-center gap-3"
+                            >
+                              <p className="text-sm sm:text-base text-gray-400 truncate">
+                                {language}
+                              </p>
+
+                              <div className="w-full h-3 sm:h-4 bg-gray-800 border border-gray-700 rounded-full overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-500"
+                                  style={{ width: `${percentage}%` }}
+                                />
+                              </div>
+                              <p className="text-xs sm:text-sm text-gray-400 w-14 text-right">
+                                {percentage.toFixed(2)}%
+                              </p>
+                            </div>
+                          );
+                        },
                       )}
                     </div>
                     <div className="w-full lg:w-[50%] h-60 overflow-y-auto space-y-3 px-4 md:pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">

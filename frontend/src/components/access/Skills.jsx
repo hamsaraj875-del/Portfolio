@@ -1,3 +1,5 @@
+//react ions
+
 import {
   SiMongodb,
   SiExpress,
@@ -14,6 +16,8 @@ import { BsFiletypeCss } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+//internal modules
 import Loader from "../access/Loader";
 
 import "../../App.css";
@@ -86,7 +90,6 @@ const Skills = () => {
               Tech Stack
             </p>
           </div>
-          {loader && <Loader />}
           <div className="flex flex-wrap text-xl gap-12 justify-center items-center  py-8">
             {result &&
               result.language.map((item, index) => {

@@ -1,4 +1,8 @@
+//external modules
 import React from "react";
+
+//internal modules
+
 import Navbar from "../components/access/Navbar";
 import Intro from "../components/access/Intro";
 import Skills from "../components/access/Skills";
@@ -8,6 +12,7 @@ import Projects from "../components/access/Projects";
 import Connect from "../components/access/Connect";
 import Leetcode from "../components/access/Leetcode";
 import ProgressBar from "../components/access/ProgressBar";
+
 import "../App.css";
 const App = () => {
   return (
