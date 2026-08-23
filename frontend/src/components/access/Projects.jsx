@@ -1,12 +1,11 @@
 //internal modules
 import Loader from "./Loader";
 
-import { FaCalculator, FaCode } from "react-icons/fa";
+import { FaCalculator, FaCode, FaLaptopCode } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import { FcDocument } from "react-icons/fc";
+import { FaLaptop } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
 
 const Projects = () => {
   const [list, setList] = useState([]);
@@ -49,14 +48,22 @@ const Projects = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
       >
-        <div className="w-full mt-20">
-          <div className="w-full flex justify-center items-center h-20 mb-12">
-            <p className="flex items-center font-mono text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-              <FcDocument className="mr-4 text-3xl sm:text-4xl" />
-              Projects
-            </p>
+        <div className="w-full mt-30">
+          <div className="w-full flex justify-center items-center h-20 mb-10">
+            <div className="flex items-center font-mono text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+              <FaLaptopCode
+                className="mr-4 text-yellow-400 sm:text-4xl"
+                size={40}
+              />
+              <p className="text-3xl md:text-5xl h-16 font-bold bg-gradient-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+                Projects
+              </p>
+            </div>
           </div>
-
+          <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+            <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+          </div>
 
           {list.length != 0 && (
             <div className="flex flex-wrap justify-center gap-8 px-4">
@@ -70,6 +77,7 @@ const Projects = () => {
                 >
                   <div
                     className="group relative w-full max-w-[560px] min-h-[560px]
+                    bg-black/80
 border border-gray-800 rounded-xl overflow-hidden
 hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#1e1b4b] hover:to-[#0c1b3f]
 hover:border-blue-500 hover:scale-105

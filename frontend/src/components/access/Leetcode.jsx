@@ -1,8 +1,16 @@
+//external modules
+
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+//react icons
+
+import { FaTrophy } from "react-icons/fa";
 import { FaCode } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FaRankingStar } from "react-icons/fa6";
-import { motion } from "framer-motion";
+
+//internal modules
 import Loader from "./Loader";
 
 const Leetcode = () => {
@@ -55,13 +63,18 @@ const Leetcode = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
       >
-        <div className="w-full min-h-screen flex flex-col justify-center items-center mt-20 md:mt-40 px-4">
-          <div className="w-full h-fit flex items-center justify-center">
-            <p className="text-2xl sm:text-3xl md:text-5xl w-fit h-fit font-mono text-center bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+        <div className="w-full min-h-screen flex flex-col justify-center items-center mt-20 md:mt-40 px-4 z-10">
+          <div className="w-full h-fit flex items-center justify-center mb-10">
+            <FaTrophy className="text-yellow-400 mr-4 sm:text-4xl " size={40} />
+            <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r h-16 from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
               Coding Profiles
             </p>
           </div>
-          <div className="w-[96%] flex flex-col h-fit py-12 justify-center items-center bg-[#09152d] mt-12 mx-auto rounded-xl">
+          <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+            <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+          </div>
+          <div className="w-[96%] flex flex-col h-fit py-12 justify-center items-center bg-[#09152d]/70 mt-12 mx-auto rounded-xl">
             <p className="border border-blue-500 rounded-xl px-2 py-2">
               <FaCode size={50} />
             </p>
@@ -86,6 +99,7 @@ const Leetcode = () => {
               viewport={{ once: false }}
               className="w-full"
             >
+              {loader && <Loader />}
               {leetcodeData && codeTab === "leetcode" && (
                 <div className="w-full">
                   <div className="mt-10">

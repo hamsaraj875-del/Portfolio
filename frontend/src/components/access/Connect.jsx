@@ -56,9 +56,9 @@ const Connect = () => {
       viewport={{ once: false }}
     >
       <div className="w-full min-h-screen flex flex-col justify-center items-center mt-20 md:mt-40 px-4">
-        <p className="w-fit h-fit text-center text-3xl md:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-          Let's Collaborate
-        </p>
+        <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+              Let's Collaborate
+            </p>
         <hr className="bg-gradient-to-r from-purple-500 to-blue-500 my-10 w-3/4 md:w-[80%] h-1"></hr>
         <div className="w-full flex flex-col lg:flex-row">
           <div className="flex w-full lg:w-[50%] flex-col px-6 md:px-12 lg:px-24">

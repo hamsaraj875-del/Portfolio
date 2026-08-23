@@ -84,12 +84,17 @@ const Skills = () => {
         viewport={{ once: false }}
       >
         <div className="w-full h-fit">
-          <div className="justify-center items-center flex mb-15">
+          <div className="justify-center items-center flex mb-10">
             <SiThunderstore className="text-yellow-300 mr-4" size={40} />
-            <p className="w-fit h-fit text-center text-3xl md:text-5xl bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-              Tech Stack
+            <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+              Skills
             </p>
           </div>
+          <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+            <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+          </div>
+          {loader && <Loader />}
           <div className="flex flex-wrap text-xl gap-12 justify-center items-center  py-8">
             {result &&
               result.language.map((item, index) => {
