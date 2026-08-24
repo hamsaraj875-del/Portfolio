@@ -1,6 +1,5 @@
 //internal modules
 import Loader from "./Loader";
-import TiltedCard from "../../utilities/TiltedCard";
 import Tilt from "react-parallax-tilt";
 
 import { FaCode, FaLaptopCode } from "react-icons/fa";
