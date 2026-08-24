@@ -45,6 +45,9 @@ const App = () => {
           <section id="Projects" className="scroll-mt-22">
             <Projects />
           </section>
+          <section>
+            <CurrentProject />
+          </section>
 
           <section id="Contact">
             <Connect />
