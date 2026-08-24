@@ -1,17 +1,20 @@
 //internal modules
 import Loader from "./Loader";
+import TiltedCard from "../../utilities/TiltedCard";
+import Tilt from "react-parallax-tilt";
 
-import { FaCalculator, FaCode, FaLaptopCode } from "react-icons/fa";
+import { FaCode, FaLaptopCode } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import { FaLaptop } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Projects = () => {
   const [list, setList] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoader(true);
     const controller = new AbortController();
     const signal = controller.signal;
 
@@ -22,6 +25,7 @@ const Projects = () => {
         });
         const data = await response.json();
         if (data.success) {
+          setLoader(false);
           setList(data.message);
         } else {
           setError(data.message);
@@ -29,6 +33,7 @@ const Projects = () => {
       } catch (err) {
         if (err.name !== "AbortError") {
           console.log(err);
+          setLoader(false);
         }
       }
     };
@@ -65,8 +70,10 @@ const Projects = () => {
             <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
           </div>
 
+          {loader && <Loader />}
+
           {list.length != 0 && (
-            <div className="flex flex-wrap justify-center gap-8 px-4">
+            <div className="flex flex-wrap justify-center gap-10 px-0">
               {list.map((item, index) => (
                 <motion.div
                   key={index}
@@ -75,62 +82,72 @@ const Projects = () => {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: false }}
                 >
-                  <div
-                    className="group relative w-full max-w-[560px] min-h-[560px]
-                    bg-black/80
-border border-gray-800 rounded-xl overflow-hidden
-hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#1e1b4b] hover:to-[#0c1b3f]
-hover:border-blue-500 hover:scale-105
-transition-all duration-500
-hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-8deg)_scale(1.05)]
-hover:shadow-[0_20px_60px_rgba(59,130,246,0.35)]
-hover:-translate-y-3 hover:z-10
-after:content-[''] after:absolute after:inset-0 after:z-20 after:opacity-0
-after:[background:radial-gradient(circle_at_top_left,rgba(59,130,246,0.25),transparent_60%)]
-after:transition-opacity after:duration-300
-hover:after:opacity-100"
+                  <Tilt
+                    tiltMaxAngleX={6}
+                    tiltMaxAngleY={6}
+                    scale={1.02}
+                    transitionSpeed={1500}
+                    perspective={1000}
+                    glareEnable={true}
+                    glareMaxOpacity={0.12}
+                    glareColor="#6366f1"
+                    glarePosition="all"
+                    className="w-full max-w-[550px]"
                   >
-                    <img
-                      src={item.projectImg}
-                      alt={item.projectName}
-                      className="w-full h-56 sm:h-80 object-cover"
-                    />
+                    <div
+                      className="group relative w-full max-w-[560px] min-h-[550px]
+                    bg-black/80
+border border-gray-800 rounded-xl overflow-hidden]
+hover:border-blue-500
+transition-all duration-500
+hover:shadow-[0_20px_60px_rgba(59,130,246,0.35)]
+"
+                    >
+                      <img
+                        src={item.projectImg}
+                        alt={item.projectName}
+                        className="w-full h-56 sm:h-80 object-cover"
+                      />
 
-                    <p className="text-lg sm:text-xl text-center font-mono mt-4 font-bold group-hover:text-purple-600 transition-color duration-400 group-hover:scale-110">
-                      {item.projectName}
-                    </p>
+                      <p
+                        className="text-lg sm:text-xl text-center font-mono mt-4 font-bold
+  text-white group-hover:text-purple-400 transition-colors duration-300"
+                      >
+                        {item.projectName}
+                      </p>
 
-                    <p className="px-3 sm:px-5 mt-4 text-center text-gray-400 group-hover:text-white">
-                      {item.projectDescription}
-                    </p>
+                      <p className="px-3 sm:px-5 mt-4 text-center text-gray-400 group-hover:text-white">
+                        {item.projectDescription}
+                      </p>
 
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 py-6">
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
-                        <GoDotFill
-                          className="text-green-700 mr-2 animate-ping"
-                          size={15}
-                        />
-                        <a
-                          href={item.projectLive}
-                          target="_blank"
-                          className="text-gray-400"
-                        >
-                          Live Demo
-                        </a>
-                      </div>
+                      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 py-6">
+                        <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
+                          
+                          <a
+                            href={item.projectLive}
+                            target="_blank"
+                            className="text-gray-400 flex items-center justify-center"
+                          ><GoDotFill
+                            className="text-green-700 mr-2 animate-ping"
+                            size={15}
+                          />
+                            Live Demo
+                          </a>
+                        </div>
 
-                      <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
-                        <FaCode className="text-green-400 mr-2" size={20} />
-                        <a
-                          href={item.projectCode}
-                          target="_blank"
-                          className="text-gray-400"
-                        >
-                          Source Code
-                        </a>
+                        <div className="border border-gray-700 rounded-xl flex items-center px-4 py-2 group-hover:border-blue-500 z-50">
+                          
+                          <a
+                            href={item.projectCode}
+                            target="_blank"
+                            className="text-gray-400 flex justify-evenly items-center"
+                          ><FaCode className="text-green-400 mr-2" size={20} />
+                            Source Code
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Tilt>
                 </motion.div>
               ))}
             </div>

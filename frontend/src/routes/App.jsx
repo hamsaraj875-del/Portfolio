@@ -46,10 +46,6 @@ const App = () => {
             <Projects />
           </section>
 
-          <section>
-            <CurrentProject />
-          </section>
-
           <section id="Contact">
             <Connect />
           </section>
