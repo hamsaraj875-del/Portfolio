@@ -30,8 +30,7 @@ const CurrentProject = () => {
   border border-gray-800 rounded-2xl bg-black/40"
         >
           <div className="lg:w-[40%]">
-            <div className="mb-6" >
-
+            <div className="mb-6">
               <h2 className="text-4xl font-bold">
                 Nex<span className="text-fuchsia-500">Talk</span>
               </h2>
@@ -81,9 +80,14 @@ const CurrentProject = () => {
               </a>
             </div>
           </div>
-          <div className="lg:w-[60%] h-fit flex flex-col items-center justify-center">
-            <p className="mb-20 text-2xl" >A Look Inside</p>
-            <DepthCarousel />
+          <div className="w-full lg:w-[60%] h-fit flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-0">
+            <p className="mb-10 md:mb-14 lg:mb-20 text-xl md:text-2xl">
+              A Look Inside
+            </p>
+
+            <div className="w-full flex justify-center">
+              <DepthCarousel />
+            </div>
           </div>
         </div>
       </div>
