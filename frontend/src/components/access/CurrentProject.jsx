@@ -81,7 +81,7 @@ const CurrentProject = () => {
             </div>
           </div>
           <div className="w-full lg:w-[60%] h-fit flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-0">
-            <p className="mb-10 md:mb-14 lg:mb-20 text-xl md:text-2xl">
+            <p className="mb-6 md:mb-8 lg:mb-10 text-xl md:text-2xl">
               A Look Inside
             </p>
 

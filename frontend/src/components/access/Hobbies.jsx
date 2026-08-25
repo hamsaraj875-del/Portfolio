@@ -13,7 +13,6 @@ const Hobbies = () => {
         viewport={{ once: false }}
       >
         <section className="mt-24 md:mt-40 mb-24 md:mb-50 px-4">
-          {/* Heading */}
           <div className="flex justify-center items-center mb-10">
             <GiMuscleUp
               className="text-yellow-300 mr-3 drop-shadow-[0_0_15px_rgba(253,224,71,0.5)]"
@@ -35,7 +34,8 @@ const Hobbies = () => {
               className="group relative w-full max-w-[360px] min-h-[350px] rounded-2xl overflow-hidden
         border border-green-500/10
         bg-gradient-to-br from-[#071f20] via-[#042326] to-[#061718]
-        p-7 flex flex-col items-center
+        p-4 sm:p-6
+        md:p-7 flex flex-col items-center
         transition-all duration-500
         hover:-translate-y-3
         hover:border-green-400/30

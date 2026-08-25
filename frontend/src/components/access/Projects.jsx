@@ -72,7 +72,7 @@ const Projects = () => {
           {loader && <Loader />}
 
           {list.length != 0 && (
-            <div className="flex flex-wrap justify-center gap-10 px-0">
+            <div className="flex flex-wrap justify-center m-2 gap-10 px-0">
               {list.map((item, index) => (
                 <motion.div
                   key={index}
