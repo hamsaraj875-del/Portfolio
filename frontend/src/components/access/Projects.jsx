@@ -97,6 +97,7 @@ const Projects = () => {
                       className="group relative w-full max-w-[560px] min-h-[550px]
                     bg-black/80
 border border-gray-800 rounded-xl overflow-hidden]
+active:border-blue-500
 hover:border-blue-500
 transition-all duration-500
 hover:shadow-[0_20px_60px_rgba(59,130,246,0.35)]

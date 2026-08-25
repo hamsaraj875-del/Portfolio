@@ -243,17 +243,17 @@ const Leetcode = () => {
                       {githubData.repoList.map((repo) => (
                         <div
                           key={repo.url}
-                          className="flex justify-between items-center p-4 rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
+                          className="flex justify-between items-center p-1 md:p-4  rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
                         >
                           <div>
-                            <p className="font-semibold">{repo.name}</p>
+                            <p className="text-sm  md:text-lg lg:text-lg font-semibold">{repo.name}</p>
                           </div>
 
                           <a
                             href={repo.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-3 py-1 border border-purple-500 rounded-lg "
+                            className="md:px-3 px-2 text-sm py-1 border border-purple-500 rounded-lg "
                           >
                             View Code
                           </a>
