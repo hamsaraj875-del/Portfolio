@@ -126,6 +126,7 @@ const Connect = () => {
                   type="text"
                   id="name"
                   placeholder="eg:Ram"
+                  required
                   className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
                 {backendError.name && (
@@ -142,6 +143,7 @@ const Connect = () => {
                   type="email"
                   id="email"
                   placeholder="eg:ram123@gmail.com"
+                  required
                   className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
                 {backendError.email && (
@@ -157,6 +159,7 @@ const Connect = () => {
                   onChange={(e) => setSubject(e.target.value)}
                   type="text"
                   id="subject"
+                  required
                   placeholder="eg:Collaboration Opportunity"
                   className="border-2 border-gray-700 px-4 py-2 rounded-xl placeholder-gray-700"
                 ></input>
@@ -174,6 +177,7 @@ const Connect = () => {
                   type="text"
                   id="description"
                   placeholder="eg: Discussion "
+                  required
                   className="border-2 border-gray-700 px-4 py-2 rounded-xl max-h-30 min-h-20 placeholder-gray-700"
                 ></textarea>
                 {backendError.description && (
