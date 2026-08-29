@@ -19,7 +19,7 @@ const Footer = () => {
 
         <div className="w-full flex flex-col md:flex-row justify-center items-center py-10 gap-10">
           <div className="w-full md:w-[60%] flex flex-col justify-center items-center gap-6 px-6 md:px-8">
-            <p className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent text-2xl md:text-3xl font-bold">
+            <p className="bg-gradient-to-r text-orange-500 text-2xl md:text-3xl font-bold">
               Hamsaraj V.C
             </p>
 

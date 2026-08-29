@@ -15,14 +15,13 @@ const CurrentProject = () => {
         <div className="w-full flex justify-center items-center h-20 mb-10">
           <div className="flex items-center font-mono text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r">
             <FaScrewdriverWrench className="mr-4 text-3xl text-yellow-400 sm:text-4xl" />
-            <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+            <p className="text-3xl md:text-5xl font-bold text-orange-500">
               Current Project
             </p>
           </div>
         </div>
         <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-          <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+          <div className="h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
         </div>
         <div
           className="w-full max-w-7xl mx-auto p-6 md:p-8
@@ -32,7 +31,7 @@ const CurrentProject = () => {
           <div className="lg:w-[40%]">
             <div className="mb-6">
               <h2 className="text-4xl font-bold">
-                Nex<span className="text-fuchsia-500">Talk</span>
+                Nex<span className="text-orange-500">Talk</span>
               </h2>
 
               <p className="text-gray-400 leading-7 mt-4 max-w-3xl">
@@ -72,7 +71,7 @@ const CurrentProject = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-6
           px-5 py-2.5 rounded-lg
-          bg-gradient-to-r from-purple-600 to-fuchsia-600
+          bg-orange-500
           font-semibold"
               >
                 <FaGithub size={20} />

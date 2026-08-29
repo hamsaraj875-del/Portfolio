@@ -66,13 +66,12 @@ const Leetcode = () => {
         <div className="w-full min-h-screen flex flex-col justify-center items-center mt-20 md:mt-40 px-4 z-10">
           <div className="w-full h-fit flex items-center justify-center mb-10">
             <FaTrophy className="text-yellow-400 mr-4 sm:text-4xl " size={40} />
-            <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r h-16 from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+            <p className="text-3xl md:text-5xl font-bold text-orange-500">
               Coding Profiles
             </p>
           </div>
           <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
-            <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-            <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
           </div>
           <div className="w-[96%] flex flex-col h-fit py-12 justify-center items-center bg-[#09152d]/70 mt-12 mx-auto rounded-xl">
             <p className="border border-blue-500 rounded-xl px-2 py-2">
@@ -227,7 +226,7 @@ const Leetcode = () => {
 
                               <div className="w-full h-3 sm:h-4 bg-gray-800 border border-gray-700 rounded-full overflow-hidden">
                                 <div
-                                  className="h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-500"
+                                  className="h-full bg-green-500 rounded-full transition-all duration-500"
                                   style={{ width: `${percentage}%` }}
                                 />
                               </div>

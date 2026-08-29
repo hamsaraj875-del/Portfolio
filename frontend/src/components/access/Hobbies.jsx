@@ -19,14 +19,13 @@ const Hobbies = () => {
               size={38}
             />
 
-            <p className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+            <p className="text-3xl md:text-5xl font-bold text-orange-500">
               Hobbies
             </p>
           </div>
 
           <div className="relative w-3/4 md:w-[80%] mx-auto mb-14">
-            <div className="h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-            <div className="absolute left-1/2 -translate-x-1/2 -top-[3px] w-16 h-[6px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-[2px]" />
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
           </div>
 
           <div className="w-full flex flex-wrap gap-7 justify-center">
