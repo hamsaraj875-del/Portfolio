@@ -40,12 +40,12 @@ const Intro = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             <div className="rounded-xl border border-blue-500/30 bg-white/5 backdrop-blur-md p-5">
-              <h3 className="text-3xl font-bold text-blue-400">9.85</h3>
+              <h3 className="text-3xl font-bold text-blue-400">9.72</h3>
               <p className="text-gray-400 text-sm mt-1">CGPA</p>
             </div>
 
             <div className="rounded-xl border border-purple-500/30 bg-white/5 backdrop-blur-md p-5">
-              <h3 className="text-3xl font-bold text-purple-400">150+</h3>
+              <h3 className="text-3xl font-bold text-purple-400">200+</h3>
               <p className="text-gray-400 text-sm mt-1">Problems Solved</p>
             </div>
 
