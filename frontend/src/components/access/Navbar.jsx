@@ -107,17 +107,7 @@ const Navbar = () => {
               </span>
             </a>
           </li>
-          <li>
-            <a
-              onClick={() => setAdmin(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full hover:cursor-pointer hover:bg-white/10 transition-all duration-300 group"
-            >
-              <FaUser className="text-gray-300 group-hover:text-purple-400 text-lg" />
-              <span className="text-white group-hover:text-purple-400">
-                Admin
-              </span>
-            </a>
-          </li>
+          
         </ul>
         <button
           onClick={() => setIsOpen(!isOpen)}
