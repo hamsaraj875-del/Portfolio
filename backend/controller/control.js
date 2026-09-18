@@ -178,7 +178,7 @@ exports.skills = async (req, res, next) => {
 
 exports.project = async (req, res, next) => {
   try {
-    const data = await projectDatabase.find();
+    const data = await projectDatabase.find().sort({ _id: -1 });
     return res.status(200).json({
       success: true,
       message: data,
