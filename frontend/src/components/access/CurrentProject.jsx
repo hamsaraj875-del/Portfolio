@@ -9,7 +9,7 @@ import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 
 const CurrentProject = () => {
-  const val = false;
+  const val = true;
   return (
     <motion.div>
       <div className="flex flex-col mt-20 px-10 py-5">
@@ -33,28 +33,37 @@ const CurrentProject = () => {
             <div className="lg:w-[40%]">
               <div className="mb-6">
                 <h2 className="text-4xl font-bold">
-                  Nex<span className="text-orange-500">Talk</span>
+                  Sra<span className="text-orange-500">tch</span>
                 </h2>
 
                 <p className="text-gray-400 leading-7 mt-4 max-w-3xl">
-                  NexTalk is a real-time communication platform built with
-                  React, Node.js, Express, MongoDB, and Socket.io, featuring
-                  secure authentication, real-time messaging, and friend
-                  management.
+          Scratch is a native Android notes application built with
+          Kotlin and Room Database, designed to help users create,
+          manage, and organize personal notes. It features user
+          authentication, persistent local storage, note creation,
+          and deletion, with a clean and intuitive Android interface.
+
                 </p>
               </div>
 
               <img
-                src="https://res.cloudinary.com/dbaqcimmp/image/upload/v1787571147/currentProject_nbyvaf.png"
+                src="https://res.cloudinary.com/dbaqcimmp/image/upload/v1790400064/4d0d7d1d-ed2e-4a36-8cfd-ec4de7d18bab_hthgob.png"
                 alt="NexTalk"
-                className="w-full rounded-xl border border-gray-800
+                className="h-[700px] w-full rounded-xl border border-gray-800
         shadow-[0_20px_60px_rgba(99,102,241,0.15)]"
               />
 
               <div className="mt-7">
                 <div className="flex flex-wrap gap-2 mt-5">
-                  {["React", "Node.js", "Express", "MongoDB", "Socket.io"].map(
-                    (tech) => (
+                  {[
+                    "Kotlin",
+                    "Android Studio",
+                    "Room Database",
+                    "SQLite",
+                    "Material Design",
+                    "Android SDK",
+                  ].map(
+                (tech) => (
                       <span
                         key={tech}
                         className="px-3 py-1 rounded-full
@@ -69,7 +78,7 @@ const CurrentProject = () => {
                 </div>
 
                 <a
-                  href="https://github.com/hamsaraj875-del/NexTalk"
+                  href="https://github.com/hamsaraj875-del/Scratch_App"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-6
@@ -78,7 +87,7 @@ const CurrentProject = () => {
           font-semibold"
                 >
                   <FaGithub size={20} />
-                  View NexTalk
+                  View Scratch on GitHub
                 </a>
               </div>
             </div>
@@ -88,7 +97,18 @@ const CurrentProject = () => {
               </p>
 
               <div className="w-full flex justify-center">
-                <DepthCarousel />
+                <DepthCarousel
+  cardWidth={320}
+  cardHeight={690}
+  visibleCards={1}
+  spread={0}
+  tilt={0}
+  depth={0}
+  blur={0}
+  autoplay={true}
+  showControls={true}
+  showIndicators={true}
+/>
               </div>
             </div>
           </div>

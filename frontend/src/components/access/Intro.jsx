@@ -13,10 +13,10 @@ const Intro = () => {
       viewport={{ once: true }}
       className="w-full min-h-screen mt-24 flex items-center"
     >
-      <div className="w-full font-sans flex flex-col lg:flex-row items-center justify-between px-8 mb-30 lg:px-24">
-        <div className="flex flex-col gap-8 max-w-3xl">
+      <div className="w-full font-sans flex flex-col lg:flex-row justify-evenly items-center px-8 mb-30 lg:px-24">
+        <div className="flex flex-col max-w-3xl">
           <p className="text-blue-400 font-semibold tracking-[4px] text-lg">
-            BACKEND • FULL STACK • JAVA
+            BACKEND • FULL STACK • ANDROID
           </p>
 
           <h1 className="text-6xl lg:text-8xl font-['Outfit'] font-extrabold   leading-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -45,7 +45,7 @@ const Intro = () => {
             </div>
 
             <div className="rounded-xl border border-purple-500/30 bg-white/5 backdrop-blur-md p-5">
-              <h3 className="text-3xl font-bold text-purple-400">200+</h3>
+              <h3 className="text-3xl font-bold text-purple-400">250+</h3>
               <p className="text-gray-400 text-sm mt-1">Problems Solved</p>
             </div>
 

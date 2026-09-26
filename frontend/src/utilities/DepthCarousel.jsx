@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import './DepthCarousel.css';
 
-const DEFAULT_ITEMS = ["https://res.cloudinary.com/dbaqcimmp/image/upload/v1787579895/ChatGPT_Image_Aug_24_2026_07_22_17_PM_cvq1tf.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1787579689/Screenshot_2026-08-22_202358_iol3nr.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1787578621/nexTalkChat_eo9os3.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1787581252/ChatGPT_Image_Aug_24_2026_07_49_55_PM_u7ugmr.png"];
+const DEFAULT_ITEMS = ["https://res.cloudinary.com/dbaqcimmp/image/upload/v1790399400/Screenshot_2026_0926_103218_lic3l8.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1790399389/Screenshot_2026_0926_103205_cohn8n.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1790399413/Screenshot_2026_0926_103651_fkug9n.png","https://res.cloudinary.com/dbaqcimmp/image/upload/v1790399418/Screenshot_2026_0926_103703_dhcjxs.png"];
 
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 const normalizeItem = it => (typeof it === 'string' ? { image: it, alt: '' } : it);
