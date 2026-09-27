@@ -3,6 +3,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { motion } from "framer-motion";
+import AnimatedTitle from "./AnimatedTitle";
 
 const Intro = () => {
   return (
@@ -23,19 +24,19 @@ const Intro = () => {
             HAMSARAJ V.C
           </h1>
 
-          <h2 className="text-2xl lg:text-4xl font-bold text-white">
-            Backend-Focused Full Stack Developer
-          </h2>
+          <AnimatedTitle />
 
-          <p className="text-gray-400  leading-9 max-w-2xl">
-            Building scalable full-stack applications using
+          <p className="text-gray-400 leading-9 max-w-2xl">
+            Building scalable web applications, intuitive Android apps, and
+            intelligent solutions using
             <span className="text-blue-400 font-semibold"> React</span>,
-            <span className="text-purple-400 font-semibold"> Express</span>,
+            <span className="text-purple-400 font-semibold"> Node.js</span>,
             <span className="text-cyan-400 font-semibold"> MongoDB</span>,
-            <span className="text-purple-400 font-semibold"> Python</span>, and
-            <span className="text-yellow-400 font-semibold"> Java</span>.
-            Passionate about backend architecture, REST APIs, authentication,
-            caching and developing software that solves real-world problems.
+            <span className="text-green-400 font-semibold"> Kotlin</span>,
+            <span className="text-yellow-400 font-semibold"> Java</span>, and
+            <span className="text-orange-400 font-semibold"> Python</span>.
+            Passionate about full-stack development, mobile app development,
+            machine learning, and creating software that solves real-world problems.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
