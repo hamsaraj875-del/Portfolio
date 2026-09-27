@@ -14,7 +14,7 @@ const Intro = () => {
       className="w-full min-h-screen mt-24 flex items-center"
     >
       <div className="w-full font-sans flex flex-col lg:flex-row justify-evenly items-center px-8 mb-30 lg:px-24">
-        <div className="flex flex-col max-w-3xl">
+        <div className="flex flex-col gap-8 max-w-3xl">
           <p className="text-blue-400 font-semibold tracking-[4px] text-lg">
             BACKEND • FULL STACK • ANDROID
           </p>
