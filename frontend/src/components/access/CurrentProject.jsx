@@ -9,7 +9,7 @@ import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 
 const CurrentProject = () => {
-  const val = true;
+  const val = false;
   return (
     <motion.div>
       <div className="flex flex-col mt-20 px-10 py-5">

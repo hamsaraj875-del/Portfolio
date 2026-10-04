@@ -7,6 +7,7 @@ import {
   SiAndroidstudio,
   SiRender,
 } from "react-icons/si";
+import { SiKotlin } from "react-icons/si";
 import { FaNodeJs, FaJava, FaReact, FaPython } from "react-icons/fa";
 import { TbBrandJavascript, TbFileTypeHtml } from "react-icons/tb";
 import { FaGitAlt, FaGithub } from "react-icons/fa6";
@@ -59,6 +60,7 @@ const Skills = () => {
   const tagList = {
     FaJava,
     TbBrandJavascript,
+    SiKotlin,
     TbFileTypeHtml,
     BsFiletypeCss,
     FaPython,
