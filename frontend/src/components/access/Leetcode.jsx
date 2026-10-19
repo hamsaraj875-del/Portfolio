@@ -1,21 +1,16 @@
-//external modules
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-//react icons
 
 import { FaTrophy } from "react-icons/fa";
 import { FaCode } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FaRankingStar } from "react-icons/fa6";
 
-//internal modules
 import Loader from "./Loader";
 
 const Leetcode = () => {
   const [leetcodeData, setLeetcodeData] = useState("");
-const [hoveredLanguage, setHoveredLanguage] = useState(null);
+  const [hoveredLanguage, setHoveredLanguage] = useState(null);
   const [loader, setLoader] = useState(true);
   const [githubData, setGithubData] = useState("");
   const [total, setTotal] = useState(0);
@@ -24,7 +19,7 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-    
+
     const fetchLeetcodeData = async () => {
       try {
         setLoader(true);
@@ -57,46 +52,39 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
   }, []);
   const languageEntries = Object.entries(githubData?.language || {});
 
-    const languageTotal = languageEntries.reduce(
-      (sum, [, byte]) => sum + byte,
-      0
-    );
+  const languageTotal = languageEntries.reduce(
+    (sum, [, byte]) => sum + byte,
+    0
+  );
 
-    const donutRadius = 72;
-    const donutCircumference = 2 * Math.PI * donutRadius;
+  const donutRadius = 72;
+  const donutCircumference = 2 * Math.PI * donutRadius;
 
-    let donutOffset = 0;
+  let donutOffset = 0;
 
-    const donutSegments = languageEntries.map(
-      ([language, byte], index) => {
-        const percentage = (byte / languageTotal) * 100;
+  const donutSegments = languageEntries.map(([language, byte], index) => {
+    const percentage = (byte / languageTotal) * 100;
 
-        const segmentLength =
-          (percentage / 100) * donutCircumference;
+    const segmentLength = (percentage / 100) * donutCircumference;
 
-        const gap = Math.min(4, segmentLength * 0.1);
+    const gap = Math.min(4, segmentLength * 0.1);
 
-        const visibleLength = Math.max(
-          segmentLength - gap,
-          0
-        );
+    const visibleLength = Math.max(segmentLength - gap, 0);
 
-        const hue = (index * 137.5) % 360;
+    const hue = (index * 137.5) % 360;
 
-        const segment = {
-          language,
-          percentage,
-          hue,
-          visibleLength,
-          offset: donutOffset,
-        };
+    const segment = {
+      language,
+      percentage,
+      hue,
+      visibleLength,
+      offset: donutOffset,
+    };
 
-        donutOffset += segmentLength;
+    donutOffset += segmentLength;
 
-        return segment;
-      }
-    );
-
+    return segment;
+  });
 
   return (
     <>
@@ -133,6 +121,12 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
               >
                 Github
               </button>
+              <button
+                onClick={(e) => setCodetab("contributions")}
+                className={`border border-gray-600 rounded-xl hover:cursor-pointer px-4 py-2 shadow ${codeTab === "contributions" ? "shadow-amber-100" : ""} hover:shadow-amber-100`}
+              >
+                Contributions
+              </button>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -143,215 +137,195 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
             >
               {loader && <Loader />}
               {leetcodeData && codeTab === "leetcode" && (
-              <div className="w-full mt-8 px-4 md:px-8">
-                <div className="w-full max-w-5xl mx-auto">
-                  <div className="relative overflow-hidden rounded-3xl border border-gray-200/10 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-8 shadow-xl">
+                <div className="w-full mt-8 px-4 md:px-8">
+                  <div className="w-full max-w-5xl mx-auto">
+                    <div className="relative overflow-hidden rounded-3xl border border-gray-200/10 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-8 shadow-xl">
+                      <div className="absolute -top-20 -right-20 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl"></div>
+                      <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
 
-                    <div className="absolute -top-20 -right-20 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl"></div>
-                    <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+                      <div className="relative">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center">
+                              <SiLeetcode size={32} className="text-yellow-400" />
+                            </div>
 
-                    <div className="relative">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-
-                        <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center">
-                            <SiLeetcode
-                              size={32}
-                              className="text-yellow-400"
-                            />
-                          </div>
-
-                          <div>
-                            <p className="text-sm text-gray-400">
-                              LeetCode Profile
-                            </p>
-
-                            <h2 className="text-xl md:text-2xl font-semibold text-white">
-                              Hamsaraj V C
-                            </h2>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-red-400/10 border border-red-400/20">
-                          <FaRankingStar
-                            size={25}
-                            className="text-red-400"
-                          />
-                          <div>
-                            <p className="text-xs text-gray-400">
-                              Ranking
-                            </p>
-
-                            <p className="text-lg font-semibold text-red-400">
-                              {leetcodeData.rank}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-8 p-5 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-
-                          <div>
-                            <p className="text-sm text-gray-400">
-                              Problems Solved
-                            </p>
-
-                            <p className="text-3xl font-bold text-white mt-1">
-                              {leetcodeData.solved}
-                              <span className="text-base font-normal text-gray-500 ml-2">
-                                / 3973
-                              </span>
-                            </p>
-                          </div>
-
-                          <div className="text-sm text-gray-400">
-                            {((leetcodeData.solved / 3973) * 100).toFixed(1)}%
-                          </div>
-                        </div>
-
-                        <div className="w-full h-3 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
-                          <div
-                            style={{
-                              width: `${Math.min(
-                                (leetcodeData.solved / 3973) * 100,
-                                100
-                              )}%`,
-                            }}
-                            className="h-full bg-gradient-to-r from-purple-500 to-purple-300 rounded-full transition-all duration-700"
-                          ></div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
-
-                        {/* Easy */}
-                        <div className="group p-5 rounded-2xl bg-green-400/5 border border-green-400/10 hover:border-green-400/30 transition-all duration-300">
-                          <div className="flex justify-between items-center">
                             <div>
                               <p className="text-sm text-gray-400">
-                                Easy
+                                LeetCode Profile
                               </p>
 
-                              <p className="text-2xl font-bold text-green-400 mt-1">
-                                {leetcodeData.easy}
+                              <h2 className="text-xl md:text-2xl font-semibold text-white">
+                                Hamsaraj V C
+                              </h2>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-red-400/10 border border-red-400/20">
+                            <FaRankingStar size={25} className="text-red-400" />
+                            <div>
+                              <p className="text-xs text-gray-400">Ranking</p>
+
+                              <p className="text-lg font-semibold text-red-400">
+                                {leetcodeData.rank}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-8 p-5 rounded-2xl bg-white/5 border border-white/10">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div>
+                              <p className="text-sm text-gray-400">
+                                Problems Solved
+                              </p>
+
+                              <p className="text-3xl font-bold text-white mt-1">
+                                {leetcodeData.solved}
+                                <span className="text-base font-normal text-gray-500 ml-2">
+                                  / 3973
+                                </span>
                               </p>
                             </div>
 
-                            <div className="w-10 h-10 rounded-xl bg-green-400/10 flex items-center justify-center">
-                              <span className="text-green-400 font-bold">
-                                E
-                              </span>
+                            <div className="text-sm text-gray-400">
+                              {((leetcodeData.solved / 3973) * 100).toFixed(1)}%
                             </div>
                           </div>
 
-                          <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
+                          <div className="w-full h-3 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
                             <div
                               style={{
                                 width: `${Math.min(
-                                  (leetcodeData.easy / 951) * 100,
+                                  (leetcodeData.solved / 3973) * 100,
                                   100
                                 )}%`,
                               }}
-                              className="h-full bg-green-400 rounded-full transition-all duration-700"
+                              className="h-full bg-gradient-to-r from-purple-500 to-purple-300 rounded-full transition-all duration-700"
                             ></div>
                           </div>
-
-                          <p className="text-xs text-gray-500 mt-2">
-                            {((leetcodeData.easy / 951) * 100).toFixed(1)}% of Easy
-                          </p>
                         </div>
-                        <div className="group p-5 rounded-2xl bg-yellow-400/5 border border-yellow-400/10 hover:border-yellow-400/30 transition-all duration-300">
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <p className="text-sm text-gray-400">
-                                Medium
-                              </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+                          <div className="group p-5 rounded-2xl bg-green-400/5 border border-green-400/10 hover:border-green-400/30 transition-all duration-300">
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <p className="text-sm text-gray-400">Easy</p>
 
-                              <p className="text-2xl font-bold text-yellow-400 mt-1">
-                                {leetcodeData.medium}
-                              </p>
+                                <p className="text-2xl font-bold text-green-400 mt-1">
+                                  {leetcodeData.easy}
+                                </p>
+                              </div>
+
+                              <div className="w-10 h-10 rounded-xl bg-green-400/10 flex items-center justify-center">
+                                <span className="text-green-400 font-bold">
+                                  E
+                                </span>
+                              </div>
                             </div>
 
-                            <div className="w-10 h-10 rounded-xl bg-yellow-400/10 flex items-center justify-center">
-                              <span className="text-yellow-400 font-bold">
-                                M
-                              </span>
+                            <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
+                              <div
+                                style={{
+                                  width: `${Math.min(
+                                    (leetcodeData.easy / 951) * 100,
+                                    100
+                                  )}%`,
+                                }}
+                                className="h-full bg-green-400 rounded-full transition-all duration-700"
+                              ></div>
                             </div>
-                          </div>
 
-                          <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
-                            <div
-                              style={{
-                                width: `${Math.min(
-                                  (leetcodeData.medium / 2074) * 100,
-                                  100
-                                )}%`,
-                              }}
-                              className="h-full bg-yellow-400 rounded-full transition-all duration-700"
-                            ></div>
+                            <p className="text-xs text-gray-500 mt-2">
+                              {((leetcodeData.easy / 951) * 100).toFixed(1)}% of
+                              Easy
+                            </p>
                           </div>
+                          <div className="group p-5 rounded-2xl bg-yellow-400/5 border border-yellow-400/10 hover:border-yellow-400/30 transition-all duration-300">
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <p className="text-sm text-gray-400">Medium</p>
 
-                          <p className="text-xs text-gray-500 mt-2">
-                            {((leetcodeData.medium / 2074) * 100).toFixed(1)}% of Medium
-                          </p>
+                                <p className="text-2xl font-bold text-yellow-400 mt-1">
+                                  {leetcodeData.medium}
+                                </p>
+                              </div>
+
+                              <div className="w-10 h-10 rounded-xl bg-yellow-400/10 flex items-center justify-center">
+                                <span className="text-yellow-400 font-bold">
+                                  M
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
+                              <div
+                                style={{
+                                  width: `${Math.min(
+                                    (leetcodeData.medium / 2074) * 100,
+                                    100
+                                  )}%`,
+                                }}
+                                className="h-full bg-yellow-400 rounded-full transition-all duration-700"
+                              ></div>
+                            </div>
+
+                            <p className="text-xs text-gray-500 mt-2">
+                              {((leetcodeData.medium / 2074) * 100).toFixed(1)}%
+                              of Medium
+                            </p>
+                          </div>
+                          <div className="group p-5 rounded-2xl bg-red-400/5 border border-red-400/10 hover:border-red-400/30 transition-all duration-300">
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <p className="text-sm text-gray-400">Hard</p>
+
+                                <p className="text-2xl font-bold text-red-400 mt-1">
+                                  {leetcodeData.hard}
+                                </p>
+                              </div>
+
+                              <div className="w-10 h-10 rounded-xl bg-red-400/10 flex items-center justify-center">
+                                <span className="text-red-400 font-bold">H</span>
+                              </div>
+                            </div>
+
+                            <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
+                              <div
+                                style={{
+                                  width: `${Math.min(
+                                    (leetcodeData.hard / 948) * 100,
+                                    100
+                                  )}%`,
+                                }}
+                                className="h-full bg-red-400 rounded-full transition-all duration-700"
+                              ></div>
+                            </div>
+
+                            <p className="text-xs text-gray-500 mt-2">
+                              {((leetcodeData.hard / 948) * 100).toFixed(1)}% of
+                              Hard
+                            </p>
+                          </div>
                         </div>
-                        <div className="group p-5 rounded-2xl bg-red-400/5 border border-red-400/10 hover:border-red-400/30 transition-all duration-300">
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <p className="text-sm text-gray-400">
-                                Hard
-                              </p>
+                        <div className="flex justify-center mt-7">
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://leetcode.com/u/HamsarajVC/"
+                            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg shadow-yellow-400/10"
+                          >
+                            <SiLeetcode size={20} />
 
-                              <p className="text-2xl font-bold text-red-400 mt-1">
-                                {leetcodeData.hard}
-                              </p>
-                            </div>
+                            <span>View LeetCode Profile</span>
 
-                            <div className="w-10 h-10 rounded-xl bg-red-400/10 flex items-center justify-center">
-                              <span className="text-red-400 font-bold">
-                                H
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="w-full h-2 mt-4 bg-gray-700/70 rounded-full overflow-hidden">
-                            <div
-                              style={{
-                                width: `${Math.min(
-                                  (leetcodeData.hard / 948) * 100,
-                                  100
-                                )}%`,
-                              }}
-                              className="h-full bg-red-400 rounded-full transition-all duration-700"
-                            ></div>
-                          </div>
-
-                          <p className="text-xs text-gray-500 mt-2">
-                            {((leetcodeData.hard / 948) * 100).toFixed(1)}% of Hard
-                          </p>
+                            <span className="group-hover:translate-x-1 transition-transform">
+                              →
+                            </span>
+                          </a>
                         </div>
-                      </div>
-                      <div className="flex justify-center mt-7">
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://leetcode.com/u/HamsarajVC/"
-                          className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg shadow-yellow-400/10"
-                        >
-                          <SiLeetcode size={20} />
-
-                          <span>
-                            View LeetCode Profile
-                          </span>
-
-                          <span className="group-hover:translate-x-1 transition-transform">
-                            →
-                          </span>
-                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -441,15 +415,12 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
                                   onMouseEnter={() =>
                                     setHoveredLanguage(language)
                                   }
-                                  onMouseLeave={() =>
-                                    setHoveredLanguage(null)
-                                  }
+                                  onMouseLeave={() => setHoveredLanguage(null)}
                                 />
                               )
                             )}
                           </svg>
                           <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none">
-
                             {hoveredLanguage ? (
                               <>
                                 <p className="text-lg sm:text-xl font-bold text-white text-center px-2">
@@ -457,12 +428,12 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
                                 </p>
 
                                 <p className="text-sm text-gray-400">
-                                  {
-                                    donutSegments.find(
-                                      (item) =>
-                                        item.language === hoveredLanguage
-                                    )?.percentage.toFixed(1)
-                                  }%
+                                  {donutSegments
+                                    .find(
+                                      (item) => item.language === hoveredLanguage
+                                    )
+                                    ?.percentage.toFixed(1)}
+                                  %
                                 </p>
                               </>
                             ) : (
@@ -478,67 +449,49 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
                             )}
                           </div>
                         </div>
-                        <div className="w-full sm:max-w-xs flex flex-col gap-2">
+                        <div className="w-full sm:max-w-xs max-h-56 sm:max-h-64 overflow-y-auto flex flex-col gap-2 pr-2 scrollbar-thin scrollbar-thumb-violet-500/70 scrollbar-track-white/5">
+                          {donutSegments.map(({ language, percentage, hue }) => (
+                            <div
+                              key={language}
+                              onMouseEnter={() => setHoveredLanguage(language)}
+                              onMouseLeave={() => setHoveredLanguage(null)}
+                              className="
+                                shrink-0
+                                flex
+                                items-center
+                                justify-between
+                                px-3
+                                py-2
+                                rounded-xl
+                                border
+                                border-gray-700/70
+                                bg-white/[0.03]
+                                hover:bg-white/[0.07]
+                                hover:border-gray-500
+                                transition-all
+                                duration-300
+                                cursor-pointer
+                              "
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <span
+                                  className="w-3 h-3 rounded-full flex-shrink-0"
+                                  style={{
+                                    backgroundColor: `hsl(${hue}, 75%, 60%)`,
+                                  }}
+                                />
 
-                          {donutSegments.map(
-                            ({
-                              language,
-                              percentage,
-                              hue,
-                            }) => (
-
-                              <div
-                                key={language}
-                                onMouseEnter={() =>
-                                  setHoveredLanguage(language)
-                                }
-                                onMouseLeave={() =>
-                                  setHoveredLanguage(null)
-                                }
-                                className="
-                                  flex
-                                  items-center
-                                  justify-between
-                                  px-3
-                                  py-2
-                                  rounded-xl
-                                  border
-                                  border-gray-700/70
-                                  bg-white/[0.03]
-                                  hover:bg-white/[0.07]
-                                  hover:border-gray-500
-                                  transition-all
-                                  duration-300
-                                  cursor-pointer
-                                "
-                              >
-
-                                <div className="flex items-center gap-3 min-w-0">
-
-                                  <span
-                                    className="w-3 h-3 rounded-full flex-shrink-0"
-                                    style={{
-                                      backgroundColor:
-                                        `hsl(${hue}, 75%, 60%)`,
-                                    }}
-                                  />
-
-                                  <p className="text-sm text-gray-300 truncate">
-                                    {language}
-                                  </p>
-
-                                </div>
-
-                                <p className="text-xs sm:text-sm text-gray-400 ml-3">
-                                  {percentage.toFixed(1)}%
+                                <p className="text-sm text-gray-300 truncate">
+                                  {language}
                                 </p>
-
                               </div>
-                            )
-                          )}
 
+                              <p className="text-xs sm:text-sm text-gray-400 ml-3">
+                                {percentage.toFixed(1)}%
+                              </p>
+                            </div>
+                          ))}
                         </div>
-
                       </div>
                     </div>
                     <div className="w-full lg:w-[50%] h-60 overflow-y-auto space-y-3 px-4 md:pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">
@@ -548,7 +501,9 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
                           className="flex justify-between items-center p-1 md:p-4  rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
                         >
                           <div>
-                            <p className="text-sm  md:text-lg lg:text-lg font-semibold">{repo.name}</p>
+                            <p className="text-sm  md:text-lg lg:text-lg font-semibold">
+                              {repo.name}
+                            </p>
                           </div>
 
                           <a
@@ -571,9 +526,66 @@ const [hoveredLanguage, setHoveredLanguage] = useState(null);
                     >
                       View Github Profile
                       <span className="group-hover:translate-x-1 transition-transform">
-                            →
+                        →
                       </span>
                     </a>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="w-full h-fit"
+            >
+              {githubData && codeTab === "contributions" && (
+                <div className="w-full h-fit mt-10 px-4 md:px-8">
+                  <div className="w-full max-w-4xl mx-auto space-y-3 max-h-96 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">
+                    {(githubData.contributions || []).length === 0 && (
+                      <p className="text-center text-gray-400">
+                        No contributions yet
+                      </p>
+                    )}
+                    {(githubData.contributions || []).map((item) => (
+                      <div
+                        key={item.url}
+                        className="flex justify-between items-center gap-4 p-3 md:p-4 rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
+                      >
+                        <div className="min-w-0">
+                          <p className="text-xs text-gray-400">{item.project}</p>
+                          <p className="text-sm md:text-lg font-semibold truncate">
+                            {item.title}
+                          </p>
+                          {item.summary && (
+                            <p className="text-xs md:text-sm text-gray-400 mt-1 line-clamp-2">
+                              {item.summary}
+                            </p>
+                          )}
+                          <div className="flex gap-3 mt-2 text-xs">
+                            <span className="text-green-400">
+                              +{item.additions}
+                            </span>
+                            <span className="text-red-400">
+                              -{item.deletions}
+                            </span>
+                            <span className="text-gray-500">
+                              {item.changedFiles} files
+                            </span>
+                          </div>
+                        </div>
+
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 md:px-3 px-2 text-sm py-1 border border-purple-500 rounded-lg"
+                        >
+                          View PR
+                        </a>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}

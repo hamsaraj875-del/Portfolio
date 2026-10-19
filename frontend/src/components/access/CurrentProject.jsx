@@ -114,21 +114,26 @@ const CurrentProject = () => {
           </div>
         )}
         {!val && (
-          <div className="w-full max-w-4xl mx-auto rounded-2xl border border-gray-800 bg-black/40 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-purple-500/10 animate-pulse" />
+          <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#0d1b3a]/80 to-[#070f22]/90 backdrop-blur-xl shadow-2xl shadow-black/40">
+            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl animate-pulse" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 bg-violet-500/15 rounded-full blur-3xl animate-pulse" />
             <div className="relative flex flex-col items-center justify-center text-center py-24 px-6">
-              <div className="text-6xl mb-6 animate-bounce">🛠️</div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                Coming <span className="text-orange-500">Soon</span>
+              <div className="w-24 h-24 mb-8 flex items-center justify-center rounded-3xl border border-orange-400/30 bg-orange-500/10 shadow-lg shadow-orange-500/10">
+                <span className="text-5xl animate-bounce">🛠️</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Coming{" "}
+                <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent">
+                  Soon
+                </span>
               </h2>
-              <p className="text-gray-400 max-w-md mb-8">
-                Something new is cooking. Check back shortly to see what I'm
-                building.
+              <p className="text-slate-400 max-w-md mb-10 leading-relaxed">
+                Something new is cooking. Check back shortly to see what I'm building.
               </p>
-              <div className="flex gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-[bounce_1s_infinite_0ms]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-[bounce_1s_infinite_150ms]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-[bounce_1s_infinite_300ms]" />
+              <div className="flex gap-2.5 px-4 py-2.5 rounded-full border border-white/10 bg-white/[0.04]">
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-orange-400 to-amber-300 animate-[bounce_1s_infinite_0ms]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-orange-400 to-amber-300 animate-[bounce_1s_infinite_150ms]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-orange-400 to-amber-300 animate-[bounce_1s_infinite_300ms]" />
               </div>
             </div>
           </div>

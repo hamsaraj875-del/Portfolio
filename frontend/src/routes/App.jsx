@@ -13,6 +13,7 @@ import Connect from "../components/access/Connect";
 import Leetcode from "../components/access/Leetcode";
 import ProgressBar from "../components/access/ProgressBar";
 import CurrentProject from "../components/access/CurrentProject";
+import Contributions from "../components/access/contribution";
 import Background from "../utilities/Background";
 
 import "../App.css";
@@ -42,9 +43,14 @@ const App = () => {
             <Leetcode />
           </section>
 
+          <section id="contribution">
+            <Contributions />
+          </section>
+
           <section id="Projects" className="scroll-mt-22">
             <Projects />
           </section>
+          
           <section>
             <CurrentProject />
           </section>

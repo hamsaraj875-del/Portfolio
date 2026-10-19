@@ -8,6 +8,7 @@ const githubControl = require("../controller/githubControl");
 
 
 githubRoot.get("/",githubControl.githubData);
+githubRoot.get("/contributions",githubControl.contributionsData);
 
 module.exports = githubRoot;
 
