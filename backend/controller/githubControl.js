@@ -154,7 +154,7 @@ exports.contributionsData = async (req, res, next) => {
   try {
     const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
-    let cachedData = await contributionDatabase.findOne({acheType: "contributions",});
+    let cachedData = await contributionDatabase.findOne({cacheType: "contributions",});
 
     if (cachedData && Date.now() - cachedData.date.getTime() < CACHE_DURATION) {
       return res.status(200).json({
