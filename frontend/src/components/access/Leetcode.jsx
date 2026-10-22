@@ -121,12 +121,6 @@ const Leetcode = () => {
               >
                 Github
               </button>
-              <button
-                onClick={(e) => setCodetab("contributions")}
-                className={`border border-gray-600 rounded-xl hover:cursor-pointer px-4 py-2 shadow ${codeTab === "contributions" ? "shadow-amber-100" : ""} hover:shadow-amber-100`}
-              >
-                Contributions
-              </button>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -529,63 +523,6 @@ const Leetcode = () => {
                         →
                       </span>
                     </a>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: false }}
-              className="w-full h-fit"
-            >
-              {githubData && codeTab === "contributions" && (
-                <div className="w-full h-fit mt-10 px-4 md:px-8">
-                  <div className="w-full max-w-4xl mx-auto space-y-3 max-h-96 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">
-                    {(githubData.contributions || []).length === 0 && (
-                      <p className="text-center text-gray-400">
-                        No contributions yet
-                      </p>
-                    )}
-                    {(githubData.contributions || []).map((item) => (
-                      <div
-                        key={item.url}
-                        className="flex justify-between items-center gap-4 p-3 md:p-4 rounded-xl border border-gray-700 hover:border-purple-500 hover:bg-[#132242] transition-all duration-300"
-                      >
-                        <div className="min-w-0">
-                          <p className="text-xs text-gray-400">{item.project}</p>
-                          <p className="text-sm md:text-lg font-semibold truncate">
-                            {item.title}
-                          </p>
-                          {item.summary && (
-                            <p className="text-xs md:text-sm text-gray-400 mt-1 line-clamp-2">
-                              {item.summary}
-                            </p>
-                          )}
-                          <div className="flex gap-3 mt-2 text-xs">
-                            <span className="text-green-400">
-                              +{item.additions}
-                            </span>
-                            <span className="text-red-400">
-                              -{item.deletions}
-                            </span>
-                            <span className="text-gray-500">
-                              {item.changedFiles} files
-                            </span>
-                          </div>
-                        </div>
-
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 md:px-3 px-2 text-sm py-1 border border-purple-500 rounded-lg"
-                        >
-                          View PR
-                        </a>
-                      </div>
-                    ))}
                   </div>
                 </div>
               )}
