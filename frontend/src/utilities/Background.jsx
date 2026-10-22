@@ -21,19 +21,21 @@ const Background = () => {
   return (
     <div className="fixed inset-0 z-0">
       <Antigravity
-        count={isMobile ? 500 : 900}
-        magnetRadius={isMobile ? 4 : 7}
-        ringRadius={isMobile ? 2.5 : 4}
-        waveSpeed={0.35}
-        waveAmplitude={0.4}
-        particleSize={isMobile ? 0.25 : 0.5}
+        count={500}
+        magnetRadius={5}
+        ringRadius={4}
+        waveSpeed={0.2}
+        waveAmplitude={0.3}
+        particleSize={0.35}
         lerpSpeed={0.04}
-        color="#4f46e5"
+        color="#151fda"
         autoAnimate={false}
-        particleVariance={0.5}
-        pulseSpeed={2}
+        particleVariance={0.3}
+        rotationSpeed={0}
+        depthFactor={0.4}
+        pulseSpeed={1.2}
         particleShape="sphere"
-        fieldStrength={isMobile ? 5 : 8}
+        fieldStrength={12}
       />
     </div>
   );
